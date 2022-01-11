@@ -2,76 +2,31 @@
   <div class="d-flex org">
     <img src="/assets/menu/caffe.svg" alt="caffe" class="org-img" />
     <div class="d-flex flex-column flex-fill">
-      <p class="org-name">کافه پائول لانژ</p>
+      <p class="org-name">موبی‌دیک</p>
       <p class="org-address">
-        رشت، خیابان گلسار، ابتدای بلوار گیلان، برج گلسار، طبقه 8
+        شعبه گلسار
       </p>
     </div>
   </div>
 
   <div class="d-flex flex-column menu">
-    <div
-      class="d-flex justify-content-center align-items-center nav-item"
-      (click)="onNavItemClicked('warehouse')"
-    >
-      <mat-icon>warehouse</mat-icon>
-      <p>انبارداری</p>
-    </div>
 
-    <div
-      class="d-flex justify-content-center align-items-center nav-item"
-      (click)="onNavItemClicked('menus')"
-    >
-      <mat-icon>menu_book</mat-icon>
-      <p>منو ها</p>
-    </div>
-
-    <div
-      class="d-flex justify-content-center align-items-center nav-item"
-      (click)="onNavItemClicked('products')"
-    >
+    <div class="d-flex justify-content-center align-items-center nav-item" (click)="onNavItemClicked('products')">
       <mat-icon>local_cafe</mat-icon>
       <p>محصولات</p>
     </div>
 
-    <div
-      class="d-flex justify-content-center align-items-center nav-item"
-      (click)="onNavItemClicked('orders')"
-    >
+    <div class="d-flex justify-content-center align-items-center nav-item" (click)="onNavItemClicked('orders')">
       <mat-icon>ballot</mat-icon>
       <p>سفارشات</p>
     </div>
 
-    <div
-      class="d-flex justify-content-center align-items-center nav-item"
-      (click)="onNavItemClicked('hallkeep')"
-    >
-      <mat-icon>meeting_room</mat-icon>
-      <p>سالن داری</p>
-    </div>
-
-    <div
-      class="d-flex justify-content-center align-items-center nav-item"
-      (click)="onNavItemClicked('management')"
-    >
+    <div class="d-flex justify-content-center align-items-center nav-item" (click)="onNavItemClicked('management')">
       <mat-icon>group</mat-icon>
       <p>مدیریت مشتری</p>
     </div>
 
-    <div
-      class="d-flex justify-content-center align-items-center nav-item"
-      (click)="onNavItemClicked('personnel')"
-      [routerLink]="['/', 'staff']"
-      routerLinkActive="focused"
-    >
-      <mat-icon>assignment_ind</mat-icon>
-      <p>پرسنل</p>
-    </div>
-
-    <div
-      class="d-flex justify-content-center align-items-center nav-item"
-      (click)="onNavItemClicked('settings')"
-    >
+    <div class="d-flex justify-content-center align-items-center nav-item" (click)="onNavItemClicked('settings')">
       <mat-icon>settings</mat-icon>
       <p>تنظیمات</p>
     </div>

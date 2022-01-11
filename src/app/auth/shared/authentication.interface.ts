@@ -26,30 +26,26 @@ export class SignInEntity extends AbstractEntity {
 export interface SignUp {
   username: string;
   password: string;
-  email: string;
-  name: string;
+  phone: string;
 }
 export class SignUpEntity extends AbstractEntity {
   username = '';
   password = '';
-  name = '';
-  email = '';
+  phone = '';
 
   constructor(init: SignUp) {
     super();
     if (init) {
       this.username = init.username;
       this.password = init.password;
-      this.name = init.name;
-      this.email = init.email;
+      this.phone = init.phone;
     }
   }
   toDTO(): object {
     return {
       username: this.username,
       password: this.password,
-      name: this.name,
-      email: this.email,
+      phone: this.phone,
     };
   }
 }

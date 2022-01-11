@@ -18,18 +18,18 @@ export class AuthService {
 
   signup(user: SignUp): Observable<any> {
     return this.http.post<any>(
-      `${Configuration.ApiUrl}/api/v1/auth/register`,
+      `${Configuration.ApiUrl}/api/v1/auth/password/signup`,
       user
     );
   }
 
   login(user: { username: string; password: string }): Observable<any> {
     return this.http
-      .post<any>(`${Configuration.ApiUrl}/api/v1/auth/login`, user)
+      .post<any>(`${Configuration.ApiUrl}/api/v1/auth/password/login`, user)
       .pipe(
         tap((res) =>
           this.doLoginUser(user.username, {
-            token: res.token,
+            token: res.accessToken,
             refreshToken: res.refreshToken,
           })
         )
