@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { CategoriesModule } from './categories/categories.module';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -25,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
     ComponentsModule,
     DialogsModule,
     StaffModule,
+    CategoriesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

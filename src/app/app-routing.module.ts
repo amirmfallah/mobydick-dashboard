@@ -16,9 +16,10 @@ const routes: Routes = [
     canActivate: [SignedInGuard],
   },
   {
-    path: 'staff',
-    component: StaffComponent,
+    path: 'categories',
     canActivate: [SignedInGuard],
+    loadChildren: () =>
+      import('./categories/categories.module').then((m) => m.CategoriesModule),
   },
 ];
 
