@@ -1,0 +1,34 @@
+[
+  {
+    "group": "staff",
+    "groupName": "پرسنل",
+    "actions": [
+      {
+        "@id": "staff:read",
+        "actionName": "خواندن پرسنل",
+        "description": "کاربر می‌تواند اطلاعات پرسنل را ببیند"
+      },
+      {
+        "@id": "staff:delete",
+        "actionName": "حذف پرسنل",
+        "description": "کاربر می‌تواند اطلاعات پرسنل را حذف کند"
+      }
+    ]
+  },
+  {
+    "group": "menu",
+    "groupName": "منوها",
+    "actions": [
+      {
+        "@id": "menu:read",
+        "actionName": "خواندن منو",
+        "description": "کاربر می‌تواند اطلاعات منو را ببیند"
+      },
+      {
+        "@id": "menu:delete",
+        "actionName": "حذف منو",
+        "description": "کاربر می‌تواند اطلاعات منو را حذف کند"
+      }
+    ]
+  }
+]

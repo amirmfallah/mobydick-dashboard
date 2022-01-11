@@ -1,0 +1,18 @@
+@import "~@angular/material/theming";
+@import "md-light/index.scss";
+@include reset-typography-margins;
+
+@include angular-material-theme($md-theme);
+$theme: $md-theme;
+
+// Declare Light Variables
+:root {
+  --mbd-box: #ffffff;
+  --mbd-text: #000000;
+  --mbd-primary: #3965d6;
+  --mbd-error: #e3675f;
+  --mbd-layer1: #f4f5fe;
+  --mbd-layer2: #eaecf9;
+  --mbd-layer3: #dee0f0;
+  --mbd-white: #ffffff;
+}

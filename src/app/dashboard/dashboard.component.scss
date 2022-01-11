@@ -1,0 +1,8 @@
+@import "../ui-kit/styles/themes/variables.scss";
+.box {
+  background-color: var(--mbd-box);
+  color: var(--mbd-text);
+  height: 50px;
+  width: 50px;
+  margin: 20px;
+}

@@ -1,0 +1,87 @@
+<div
+  class="d-flex flex-column align-items-center right-frame flex-fill"
+  [class.open]="this.isMenuOpen"
+>
+  <div
+    class="d-flex justify-content-center align-items-center nav-item open-btn"
+    (click)="openMenu()"
+  >
+    <mat-icon [class.invisible]="this.isMenuOpen">menu</mat-icon>
+    <mat-icon [class.invisible]="!this.isMenuOpen">close</mat-icon>
+  </div>
+  <div class="d-flex flex-column menu">
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('warehouse')"
+      [class.nav-item-open]="this.isMenuOpen"
+    >
+      <mat-icon>warehouse</mat-icon>
+      <p *ngIf="isMenuOpen">انبارداری</p>
+    </div>
+
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('menus')"
+      [class.nav-item-open]="this.isMenuOpen"
+    >
+      <mat-icon>menu_book</mat-icon>
+      <p *ngIf="isMenuOpen">منو ها</p>
+    </div>
+
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('products')"
+      [class.nav-item-open]="this.isMenuOpen"
+    >
+      <mat-icon>local_cafe</mat-icon>
+      <p *ngIf="isMenuOpen">محصولات</p>
+    </div>
+
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('orders')"
+      [class.nav-item-open]="this.isMenuOpen"
+    >
+      <mat-icon>ballot</mat-icon>
+      <p *ngIf="isMenuOpen">سفارشات</p>
+    </div>
+
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('hallkeep')"
+      [class.nav-item-open]="this.isMenuOpen"
+    >
+      <mat-icon>meeting_room</mat-icon>
+      <p *ngIf="isMenuOpen">سالن داری</p>
+    </div>
+
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('management')"
+      [class.nav-item-open]="this.isMenuOpen"
+    >
+      <mat-icon>group</mat-icon>
+      <p *ngIf="isMenuOpen">مدیریت مشتری</p>
+    </div>
+
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('personnel')"
+      [class.nav-item-open]="this.isMenuOpen"
+      [routerLink]="['/', 'staff']"
+      routerLinkActive="focused"
+    >
+      <mat-icon>assignment_ind</mat-icon>
+      <p *ngIf="isMenuOpen">پرسنل</p>
+    </div>
+
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('settings')"
+      [class.nav-item-open]="this.isMenuOpen"
+    >
+      <mat-icon>settings</mat-icon>
+      <p *ngIf="isMenuOpen">تنظیمات</p>
+    </div>
+  </div>
+</div>

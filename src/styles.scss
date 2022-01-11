@@ -1,0 +1,62 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+@import "~bootstrap/scss/_grid.scss";
+
+@import "~@angular/material/theming";
+
+// Fonts
+@import "https://fonts.googleapis.com/css?family=Material+Icons+Round";
+@import url("assets/IRANSans.css");
+
+@import "./app/ui-kit/styles/themes/variables.scss";
+
+html,
+body {
+  height: 100%;
+  text-align: start;
+}
+body {
+  margin: 0;
+  font-family: "IranSans", "Helvetica Neue", sans-serif;
+}
+
+.material-icons {
+  font-size: 24px;
+  font-family: "Material Icons Round", "Material Icons";
+  .mat-badge-content {
+    font-family: "IranSans";
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mbd-button {
+  border-radius: 12px !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px var(--mbd-box) inset;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--mbd-text) !important;
+}
+
+mat-form-field {
+  letter-spacing: 0.4px !important;
+}

@@ -1,0 +1,97 @@
+@import "../../../ui-kit/styles/themes/variables.scss";
+
+.dark-mode {
+  padding: 12px;
+  background: var(--mbd-layer2);
+  border-radius: 24px;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 32px;
+  top: 32px;
+}
+
+.main-container {
+  height: 100%;
+  width: 100%;
+  padding: 32px;
+}
+
+.main-box {
+  padding: 24px 16px;
+  background-color: var(--mbd-box);
+  border-radius: 8px;
+  box-shadow: 0px 2px 11px -4px rgba(0, 0, 0, 0.25);
+}
+
+.box-description {
+  width: 277px;
+  height: 56px;
+}
+
+.mbd-text {
+  color: var(--find-text);
+  opacity: 70%;
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+
+.mbd-header {
+  color: var(--find-text);
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.email-input {
+  margin: 24px 0;
+  width: 277px;
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+}
+
+.password-input {
+  margin-bottom: 24px;
+  box-sizing: border-box;
+  width: 277px;
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+}
+
+.mbd-button {
+  background: var(--mbd-primary);
+  height: 44px;
+  border: none;
+}
+
+.btn_loading {
+  border-radius: 8px 8px 0 0 !important;
+}
+
+input {
+  color: var(--mbd-text);
+}
+
+.email-label {
+  color: var(--mbd-text);
+  opacity: 70%;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  margin: 0 !important;
+  padding: 0;
+}

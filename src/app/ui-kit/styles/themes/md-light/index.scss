@@ -1,0 +1,12 @@
+@import "~@angular/material/theming";
+@import "colors";
+@import "typography";
+
+@include mat-core($md-typography);
+$md-primary: mat-palette($md-primary-palette, 700);
+$md-accent: mat-palette($md-secondary-palette, 400);
+$md-warn: mat-palette($md-warn-palette);
+$md-theme: mat-light-theme($md-primary, $md-accent, $md-warn);
+
+@include angular-material-theme($md-theme);
+@include reset-typography-margins;

@@ -1,0 +1,69 @@
+@import "../../ui-kit/styles/themes/variables.scss";
+
+.personel-box {
+  padding: 16px;
+  gap: 16px;
+}
+
+.personel-txt {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 31px;
+  margin-bottom: 0;
+  text-align: right;
+}
+
+.mbd-button {
+  padding: 8px 16px;
+  width: 163.5px;
+  white-space: nowrap;
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 23px;
+}
+
+.icon {
+  margin-left: 7px;
+}
+
+.search-box {
+  background: var(--mbd-layer2);
+  padding: 8px 16px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+.search-input {
+  height: 22px;
+  background: inherit;
+  border: none;
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 23px;
+  text-align: right;
+}
+.search-input:focus {
+  outline: none;
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder {
+  color: var(--mbd-text);
+  opacity: 1;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: var(--mbd-box) inset !important;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: (--mbd-text) !important;
+}

@@ -1,0 +1,9 @@
+<ng-container *ngIf="viewFileDesktopVisible$ | async">
+  <mbd-login-desktop [form]="form" (formSubmit)="this.onSubmit()" [error]="error"></mbd-login-desktop>
+</ng-container>
+<ng-container *ngIf="viewFileTabletVisible$ | async">
+  <mbd-login-desktop [form]="form" (formSubmit)="this.onSubmit()" [error]="error"></mbd-login-desktop>
+</ng-container>
+<ng-container *ngIf="viewFileMobileVisible$ | async">
+  <mbd-login-mobile [form]="form" (formSubmit)="this.onSubmit()" [error]="error"></mbd-login-mobile>
+</ng-container>

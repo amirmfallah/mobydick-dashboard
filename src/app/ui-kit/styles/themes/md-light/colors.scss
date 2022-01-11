@@ -1,0 +1,124 @@
+@import "~@angular/material/theming";
+
+$background: #f0f2f9;
+$md-light-theme-background: (
+  //status-bar: black,
+  app-bar: #d6d6d6,
+  background: $background,
+  //hover:      rgba(white, 0.04), // TODO(kara): check style with Material Design UX
+  card: #ffffff,
+  dialog: #ffffff,
+  //disabled-button: rgba(white, 0.12),
+  //raised-button: map-get($mat-grey, 800),
+  //focused-button: $light-focused,
+  //selected-button: map_get($mat-grey, 900),
+  //selected-disabled-button: map_get($mat-grey, 800),
+  //disabled-button-toggle: black,
+  unselected-chip: #ffffff,
+  //disabled-list-option: black,
+  //tooltip: map_get($mat-grey, 700),
+);
+$md-light-theme-foreground: (
+  //base:              white,
+  //divider:           $light-dividers,
+  //dividers:          $light-dividers,
+  //disabled:          $light-disabled-text,
+  //disabled-button:   rgba(white, 0.3),
+  //disabled-text:     $light-disabled-text,
+  //elevation:         black,
+  //hint-text:         $light-disabled-text,
+  //secondary-text:    $light-secondary-text,
+  //icon:              white,
+  //icons:             white,
+  text: #000000,
+  //slider-min:        white,
+  //slider-off:        rgba(white, 0.3),
+  //slider-off-active: rgba(white, 0.3),
+);
+
+$mat-light-theme-background: map-merge(
+  $mat-light-theme-background,
+  $md-light-theme-background
+);
+$mat-light-theme-foreground: map-merge(
+  $mat-light-theme-foreground,
+  $md-light-theme-foreground
+);
+
+$dark-primary-text: #ffffff;
+$light-primary-text: #000000;
+$dark-secondary-text: #ffffff;
+$light-secondary-text: #000000;
+
+$md-primary-palette: (
+  50: #e6f5e6,
+  100: #c3e5c1,
+  200: #9bd599,
+  300: #71c56f,
+  400: #4eb94e,
+  500: #25ad2b,
+  600: #199e22,
+  700: #008c15,
+  800: #007b05,
+  900: #005d00,
+  contrast: (
+    50: $light-primary-text,
+    100: $light-primary-text,
+    200: $light-primary-text,
+    300: $light-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+  ),
+);
+
+$md-secondary-palette: (
+  50: #fff8df,
+  100: #ffebaf,
+  200: #ffdf7b,
+  300: #ffd342,
+  400: #ffc800,
+  500: #ffbe00,
+  600: #ffb000,
+  700: #ff9c00,
+  800: #ff8a00,
+  900: #ff6800,
+  contrast: (
+    50: $light-secondary-text,
+    100: $light-secondary-text,
+    200: $light-secondary-text,
+    300: $light-secondary-text,
+    400: $light-secondary-text,
+    500: $light-secondary-text,
+    600: $light-secondary-text,
+    700: $light-secondary-text,
+    800: $light-secondary-text,
+    900: $light-secondary-text,
+  ),
+);
+
+$md-warn-palette: (
+  100: #cf6679,
+  200: #cf6679,
+  300: #cf6679,
+  400: #cf6679,
+  500: #cf6679,
+  600: #cf6679,
+  700: #cf6679,
+  800: #cf6679,
+  900: #cf6679,
+  contrast: (
+    100: $light-secondary-text,
+    200: $light-secondary-text,
+    300: $light-secondary-text,
+    400: $light-secondary-text,
+    500: $light-secondary-text,
+    600: $light-secondary-text,
+    700: $light-secondary-text,
+    800: $light-secondary-text,
+    900: $light-secondary-text,
+  ),
+);

@@ -1,0 +1,99 @@
+@import "../../../ui-kit/styles/themes/variables.scss";
+
+.right-frame {
+  height: 100%;
+  width: 320px;
+  background: var(--mbd-layer2);
+  padding: 48px 24px;
+}
+
+.org {
+  background: var(--mbd-primary);
+  border-radius: 12px;
+  width: 272px;
+  height: 108px;
+  padding: 16px;
+}
+
+.org-img {
+  width: 76px;
+  height: 76px;
+  margin-left: 12px;
+}
+
+.org-name {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: right;
+  color: var(--mbd-white);
+  margin-bottom: 8px;
+}
+
+.org-address {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 17px;
+  text-align: right;
+  color: var(--mbd-white);
+}
+
+.mat-icon {
+  margin-left: 11px;
+  color: var(--mbd-text) !important;
+}
+
+.btns {
+  gap: 16px;
+}
+
+.nav-item {
+  padding: 12px 24px;
+
+  &:hover {
+    padding: 12px 24px;
+    background: var(--mbd-layer3);
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  &:active {
+    padding: 12px 24px;
+    background: var(--mbd-layer3);
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  &:focus {
+    padding: 12px 24px;
+    background: var(--mbd-layer3);
+    border-radius: 12px;
+    cursor: pointer;
+  }
+}
+
+.focused {
+  padding: 12px 24px;
+  background: var(--mbd-layer3);
+  border-radius: 12px;
+}
+
+.menu {
+  padding: 10px;
+  margin-top: 24px;
+  gap: 10px;
+
+  p {
+    color: var(--mbd-text);
+    width: 172px;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: right;
+    margin-bottom: 0;
+  }
+}

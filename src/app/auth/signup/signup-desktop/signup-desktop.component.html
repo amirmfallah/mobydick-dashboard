@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-center align-items-center main-container">
+  <form class="d-flex flex-column main-box" [formGroup]="form" (ngSubmit)="formSubmit.next()">
+    <div class="d-flex flex-column box-description">
+      <h1 class="mbd-header">ثبت نام</h1>
+      <p class="mbd-text">برای ادامه حساب کاربری اطلاعات خود را وارد کنید.</p>
+    </div>
+    <mat-form-field class="inputs" appearance="outline">
+      <mat-label>نام‌کاربری</mat-label>
+      <input type="text" matInput formControlName="username" [disabled]="form.disabled" name="username" />
+    </mat-form-field>
+
+    <mat-form-field class="inputs" appearance="outline">
+      <mat-label>ایمیل</mat-label>
+      <input type="email" matInput formControlName="email" [disabled]="form.disabled" name="email" />
+    </mat-form-field>
+
+    <mat-form-field class="inputs" appearance="outline">
+      <mat-label class="label"> نام و نام خانوادگی </mat-label>
+      <input type="text" matInput formControlName="name" [disabled]="form.disabled" name="name" />
+    </mat-form-field>
+
+    <mat-form-field class="inputs" appearance="outline">
+      <mat-label>رمز عبور</mat-label>
+      <input type="password" minlength="8" matInput formControlName="password" [disabled]="form.disabled"
+        name="password" />
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary" class="mbd-button w-100" [disabled]="form.disabled"
+      [class.btn_loading]="form.disabled">
+      ثبت
+    </button>
+    <mat-progress-bar [class.invisible]="!form.disabled" [class.visible]="form.disabled" mode="query">
+    </mat-progress-bar>
+
+    <mat-error *ngIf="error" class="mat-caption" class="text-center mt-3">
+      {{ error }}
+    </mat-error>
+  </form>
+</div>

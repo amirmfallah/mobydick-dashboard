@@ -1,0 +1,10 @@
+<div class="d-flex flex-row w-100 h-100">
+  <div *ngIf="isLoggedIn()">
+    <mbd-desktop-menu *ngIf="viewFileDesktopVisible$ | async"></mbd-desktop-menu>
+    <mbd-tablet-menu *ngIf="viewFileTabletVisible$ | async"> </mbd-tablet-menu>
+    <div class="spacing" *ngIf="viewFileTabletVisible$ | async"></div>
+  </div>
+  <div class="w-100 flex-1 flex-grow-1">
+    <router-outlet></router-outlet>
+  </div>
+</div>

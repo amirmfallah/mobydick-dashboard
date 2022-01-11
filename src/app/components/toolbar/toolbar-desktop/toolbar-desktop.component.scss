@@ -1,0 +1,61 @@
+@import "../../../ui-kit/styles/themes/variables.scss";
+.dark-mode {
+  width: 48px;
+  height: 48px;
+  background: var(--mbd-layer2);
+  border-radius: 24px;
+  padding: 12px;
+}
+.headset {
+  padding: 12px;
+  width: 48px;
+  height: 48px;
+  background: var(--mbd-layer2) !important;
+  border-radius: 24px;
+  box-shadow: none !important;
+}
+.branch {
+  padding: 0px 12px;
+  width: 140px;
+  height: 48px;
+  background: var(--mbd-layer2);
+  border-radius: 24px;
+  gap: 8px;
+}
+.branch-p {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 23px;
+  text-align: right;
+  white-space: nowrap;
+  margin-bottom: 0;
+}
+.avatar {
+  width: 48px;
+  height: 48px;
+  box-sizing: border-box;
+  border-radius: 24px;
+}
+.home {
+  width: 24px;
+  height: 21px;
+}
+.box {
+  gap: 16px;
+  width: 332px;
+}
+
+.icon {
+  color: var(--mbd-text);
+}
+
+.arrow {
+  border: none;
+  background: var(--mbd-layer2);
+}
+
+::ng-deep .mat-mini-fab {
+  transition: none !important;
+}

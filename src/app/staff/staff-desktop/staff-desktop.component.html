@@ -1,0 +1,34 @@
+<div class="main-container w-100 h-100">
+  <div class="d-flex align-items-center justify-content-end toolbar">
+    <mbd-toolbar-desktop></mbd-toolbar-desktop>
+  </div>
+  <div class="d-flex flex-column align-items-start main-box">
+    <div class="header">پرسنل</div>
+
+    <div class="d-flex justify-content-between align-items-start div-container">
+      <button mat-flat-button color="primary" class="d-flex align-items-center justify-content-center mbd-button"
+        (click)="openNewStaffDialog()">
+        <mat-icon class="icon"> person_add </mat-icon>
+        پرسنل جدید
+      </button>
+
+      <div class="d-flex justify-content-center align-items-center search-box">
+        <input type="search" placeholder="جست و جو..." class="search-input" />
+        <mat-icon class="srch-icon">search_black</mat-icon>
+      </div>
+
+      <button mat-flat-button class="d-flex align-items-center justify-content-center mbd-button">
+        <mat-icon class="icon">sort</mat-icon>
+        مرتب سازی
+      </button>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between txt-container">
+      <div>مشخصات</div>
+      <div>سطح دسترسی</div>
+      <div>عملیات</div>
+    </div>
+
+    <mbd-staff-item-desktop class="staff-row"></mbd-staff-item-desktop>
+  </div>
+</div>

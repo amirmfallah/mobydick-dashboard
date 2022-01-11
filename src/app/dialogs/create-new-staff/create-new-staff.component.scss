@@ -1,0 +1,33 @@
+@import "../../ui-kit/styles/themes/variables.scss";
+
+.main-box {
+  width: 297px;
+  padding: 16px;
+  background: var(--mbd-box);
+  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.14),
+    0px 6px 30px rgba(0, 0, 0, 0.12), 0px 8px 10px rgba(0, 0, 0, 0.2),
+    0px 0px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  gap: 16px;
+}
+
+.header {
+  width: 100%;
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: right;
+  margin-bottom: 16px;
+}
+
+.btns {
+  width: 100%;
+  padding-bottom: 15px;
+}
+
+mat-select,
+mat-option {
+  font-family: "IranSans" !important;
+}
