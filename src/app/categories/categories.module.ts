@@ -5,10 +5,16 @@ import { CategoriesRoutingModule } from './categories-routing.module';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoriesService } from './services/categories.service';
 import { CategoryComponent } from './category/category.component';
+import { UiKitModule } from '../ui-kit/ui-kit.module';
+import { DialogsModule } from '../dialogs/dialogs.module';
 
 @NgModule({
-  declarations: [CategoriesComponent, CategoriesDesktopComponent, CategoryComponent],
-  imports: [CommonModule, CategoriesRoutingModule],
+  declarations: [
+    CategoriesComponent,
+    CategoriesDesktopComponent,
+    CategoryComponent,
+  ],
+  imports: [CommonModule, CategoriesRoutingModule, UiKitModule, DialogsModule],
   providers: [CategoriesService],
 })
 export class CategoriesModule {}

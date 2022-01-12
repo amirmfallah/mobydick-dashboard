@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 
 import { CreateNewStaffComponent } from './create-new-staff/create-new-staff.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CreateNewCategoryComponent } from './create-new-category/create-new-category.component';
 
 @NgModule({
-  declarations: [CreateNewStaffComponent],
+  declarations: [CreateNewStaffComponent, CreateNewCategoryComponent],
   imports: [CommonModule, UiKitModule, MatDialogModule],
-  exports: [CreateNewStaffComponent],
+  exports: [CreateNewStaffComponent, CreateNewCategoryComponent],
 })
 export class DialogsModule {}

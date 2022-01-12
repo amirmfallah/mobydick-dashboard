@@ -60,3 +60,14 @@ input:-webkit-autofill {
 mat-form-field {
   letter-spacing: 0.4px !important;
 }
+
+h1,
+h2,
+h3,
+p {
+  margin-bottom: 0 !important;
+}
+
+.mat-flat-button {
+  border-radius: 8px !important;
+}

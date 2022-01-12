@@ -11,7 +11,8 @@
 
   <div class="d-flex flex-column menu">
 
-    <div class="d-flex justify-content-center align-items-center nav-item" (click)="onNavItemClicked('products')">
+    <div class="d-flex justify-content-center align-items-center nav-item" (click)="onNavItemClicked('products')"
+      [routerLink]="['/', 'categories']" routerLinkActive="focused">
       <mat-icon>layers</mat-icon>
       <p>دسته‌بندی‌ ها</p>
     </div>

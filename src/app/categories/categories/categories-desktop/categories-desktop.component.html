@@ -1,1 +1,25 @@
-<p>categories-desktop works!</p>
+<div class="main-container">
+  <div class="d-flex flex-row justify-content-between align-items-center header">
+    <h2>دسته‌بندی ها</h2>
+    <button mat-flat-button color="primary" (click)="openNewCategoryDialog()">افزدن دسته‌بندی</button>
+  </div>
+  <div class="d-flex flex-row justify-content-between align-items-center pl-3 pr-2 pb-3">
+    <h3>نام دسته‌بندی</h3>
+    <h3>عملیات</h3>
+  </div>
+  <div class="d-flex flex-column w-100 h-100 overflow auto">
+    <div class="item d-flex flex-row justify-content-between align-items-center"
+      *ngFor="let category of (categories | async)">
+      <div class="d-flex flex-row align-items-center">
+        <img [src]="category.thumbnail" alt="" class="thumbnail">
+        <h2 class="mr-3">{{category.name}}</h2>
+      </div>
+      <div>
+        <button mat-flat-button class="ml-2 edit">ویرایش</button>
+        <button mat-flat-button color="warn" class="ml-3" (click)="delete(category._id)">
+          حذف
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
