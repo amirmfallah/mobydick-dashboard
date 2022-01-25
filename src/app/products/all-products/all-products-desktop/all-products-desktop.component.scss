@@ -1,0 +1,44 @@
+@import "../../../ui-kit/styles/themes/variables.scss";
+
+.main-box {
+  height: 100%;
+  width: 100%;
+  padding: 24px 16px;
+  border-radius: 8px;
+  background-color: var(--mbd-box);
+  box-shadow: 0px 2px 11px -4px rgba(0, 0, 0, 0.25);
+}
+
+.main-container {
+  padding: 48px;
+}
+
+.item {
+  box-shadow: 0px 2px 11px -4px rgba(0, 0, 0, 0.25);
+  background-color: var(--mbd-box);
+  .thumbnail {
+    height: 50px;
+    width: 50px;
+    border-radius: 8px;
+    margin: 4px;
+  }
+  border: 1px solid rgba(85, 85, 85, 0.274);
+  border-radius: 8px;
+  margin-bottom: 8px;
+
+  h2 {
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
+.header {
+  margin-bottom: 24px;
+  h2 {
+    font-size: 20px;
+  }
+}
+
+.edit {
+  background-color: rgba(0, 0, 0, 0.103);
+}

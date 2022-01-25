@@ -17,7 +17,8 @@
       <p>دسته‌بندی‌ ها</p>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center nav-item" (click)="onNavItemClicked('products')">
+    <div class="d-flex justify-content-center align-items-center nav-item" (click)="onNavItemClicked('products')"
+      [routerLink]="['/', 'products']" routerLinkActive="focused">
       <mat-icon>fastfood</mat-icon>
       <p>محصولات</p>
     </div>

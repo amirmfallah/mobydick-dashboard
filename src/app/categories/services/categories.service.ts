@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { Configuration } from 'src/core/configuration';
 import { categoryItem } from '../interfaces/categories.interface';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class CategoriesService {
   constructor(private http: HttpClient) {}
 

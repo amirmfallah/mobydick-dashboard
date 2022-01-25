@@ -12,6 +12,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { CategoriesModule } from './categories/categories.module';
+import { IngredientsService } from 'src/core/services/ingredients.service';
+import { CategoriesService } from './categories/services/categories.service';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent],
@@ -28,7 +30,7 @@ import { CategoriesModule } from './categories/categories.module';
     StaffModule,
     CategoriesModule,
   ],
-  providers: [],
+  providers: [IngredientsService, CategoriesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -21,6 +21,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./categories/categories.module').then((m) => m.CategoriesModule),
   },
+  {
+    path: 'products',
+    canActivate: [SignedInGuard],
+    loadChildren: () =>
+      import('./products/products.module').then((m) => m.ProductsModule),
+  },
 ];
 
 @NgModule({

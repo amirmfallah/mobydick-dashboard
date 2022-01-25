@@ -11,12 +11,22 @@ import { StaffItemDesktopComponent } from './staff-item/staff-item-desktop/staff
 import { StaffItemMobileComponent } from './staff-item/staff-item-mobile/staff-item-mobile.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatTabsModule } from '@angular/material/tabs';
+
+import {
+  MatExpansionModule,
+  MatExpansionPanel,
+} from '@angular/material/expansion';
+import { OptionItemComponent } from './option-item/option-item.component';
 
 @NgModule({
   declarations: [
     StaffItemDesktopComponent,
     StaffItemMobileComponent,
     DragDropDirective,
+    OptionItemComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +38,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatProgressBarModule,
     MatSelectModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatExpansionModule,
+    MatTabsModule,
   ],
   exports: [
     MatButtonModule,
@@ -41,6 +55,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     StaffItemMobileComponent,
     DragDropDirective,
     MatProgressSpinnerModule,
+    MatExpansionModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatTabsModule,
+    OptionItemComponent,
   ],
 })
 export class UiKitModule {}

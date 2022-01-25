@@ -1,0 +1,63 @@
+<div class="d-flex access-level-container w-100 mb-3">
+  <div class="d-flex flex-column align-items-start right-frame">
+    <mat-form-field class="input w-100 input-margin" appearance="outline">
+      <mat-label>نام گزینه</mat-label>
+      <input matInput type="text" (change)="onInputChange($event, 'optionName')" />
+    </mat-form-field>
+    <mat-form-field class="input w-100 input-margin" appearance="outline">
+      <mat-label>قیمت پایه</mat-label>
+      <input matInput type="number" (change)="onInputChange($event, 'price')" />
+    </mat-form-field>
+    <button mat-flat-button color="warn" (click)="remove_me()">حذف</button>
+  </div>
+
+  <div class="d-flex flex-column left-frame flex-1 flex-grow-1">
+
+    <div class="d-flex flex-column">
+      <mat-accordion multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="group-name">
+              نان‌ </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="d-flex flex-wrap checkbox-container">
+            <div class="checkbox-item" *ngFor="let item of (ingredients$ | async)">
+              <mat-checkbox class="checkbox" color="primary" [value]="item._id"
+                (change)="onCheckboxChange($event, 'bread')">
+                {{item.name}}
+              </mat-checkbox>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="group-name">
+              محتویات </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="d-flex flex-wrap checkbox-container">
+            <div class="checkbox-item" *ngFor="let item of (ingredients$ | async)">
+              <mat-checkbox class="checkbox" color="primary" [value]="item._id"
+                (change)="onCheckboxChange($event, 'ingredients')">
+                {{item.name}}
+              </mat-checkbox>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="group-name">
+              افزودنی ها </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="d-flex flex-wrap checkbox-container">
+            <div class="checkbox-item" *ngFor="let item of (ingredients$ | async)">
+              <mat-checkbox class="checkbox" color="primary" [value]="item._id"
+                (change)="onCheckboxChange($event, 'optional')">
+                {{item.name}}
+              </mat-checkbox>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>
