@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CategoriesService } from './../../../categories/services/categories.service';
 import { Category } from './../../interfaces/products.interface';
 import { OptionItemComponent } from './../../../ui-kit/option-item/option-item.component';
@@ -9,12 +10,13 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { switchMap } from 'rxjs/operators';
 import { ImageUploadService } from 'src/core/services/imageUpload.service';
 import { BehaviorSubject } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'mbd-new-product-desktop',
@@ -35,18 +37,20 @@ export class NewProductDesktopComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private _cfr: ComponentFactoryResolver,
     private categoriesService: CategoriesService,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) {}
   form: FormGroup = this.fb.group({
-    name: [''],
+    name: ['', Validators.required],
     thumbnail: [''],
-    description: [''],
-    available: [''],
-    category: [''],
+    description: ['', Validators.required],
+    available: ['', Validators.required],
+    category: ['', Validators.required],
     bread: this.fb.array([]),
     optional: this.fb.array([]),
     ingredients: this.fb.array([]),
-    price: this.fb.array([]),
+    price: this.fb.array([], Validators.required),
   });
   ngOnInit(): void {
     this.categoriesService.getAllCategories().subscribe((x) => {
@@ -119,9 +123,41 @@ export class NewProductDesktopComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.files.length);
     this.form.controls['available'].setValue(true);
-    this.productService.createProduct(this.form.value).subscribe((x) => {
-      console.log(x);
-    });
+    if (!this.form.valid || this.files.length <= 0) {
+      this._snackBar.open('فیلد‌های الزامی را تکمیل کنید.', 'باشه', {
+        duration: 2000,
+        panelClass: ['snakbar'],
+      });
+      return;
+    }
+    this.form.disable();
+    this.imageService
+      .uploadImage(this.files[0])
+      .pipe(
+        switchMap((res: { Location: string; Key: string }) => {
+          this.form.controls['thumbnail'].setValue(res.Location);
+          return this.productService.createProduct(this.form.value);
+        })
+      )
+      .subscribe(
+        (res) => {
+          console.log(res);
+          this._snackBar.open('محصول با موفقیت ساخته شد.', 'باشه', {
+            duration: 2000,
+            panelClass: ['snakbar'],
+          });
+          this.form.enable();
+          this.router.navigate(['/', 'products']);
+        },
+        (err) => {
+          this.form.enable();
+          this._snackBar.open('در هنگام ساخت محصول مشکلی پیش آمد.', 'باشه', {
+            duration: 2000,
+            panelClass: ['snakbar'],
+          });
+        }
+      );
   }
 }

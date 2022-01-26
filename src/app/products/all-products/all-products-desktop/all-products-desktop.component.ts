@@ -40,11 +40,11 @@ export class AllProductsDesktopComponent implements OnInit {
       .deleteProductById(id)
       .pipe(
         switchMap(() => {
-          return this.productsService.getAllProducts();
+          return this.productsService.getAllProducts(this.currentPage.value);
         })
       )
-      .subscribe((res: ProductUnpopulated[]) => {
-        this.products.next(res);
+      .subscribe((res: productsResponse) => {
+        this.products.next(res.items);
       });
   }
 

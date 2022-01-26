@@ -14,6 +14,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import {
   MatExpansionModule,
@@ -42,6 +43,7 @@ import { OptionItemComponent } from './option-item/option-item.component';
     MatRadioModule,
     MatExpansionModule,
     MatTabsModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatButtonModule,
@@ -60,6 +62,7 @@ import { OptionItemComponent } from './option-item/option-item.component';
     MatRadioModule,
     MatTabsModule,
     OptionItemComponent,
+    MatSnackBarModule,
   ],
 })
 export class UiKitModule {}

@@ -197,9 +197,9 @@ $primary: var(--mbd-primary);
 
 .action-buttons {
   background-color: var(--mbd-box);
-  padding: 8px;
   margin-top: 16px;
   border-radius: 16px;
+  overflow: hidden;
 }
 
 ::ng-deep .mat-form-field-wrapper {
