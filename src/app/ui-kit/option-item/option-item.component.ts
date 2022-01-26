@@ -127,7 +127,7 @@ export class OptionItemComponent implements OnInit {
   onCheckboxChange(e, field: string) {
     const checkArray: FormArray = this.form.get(field) as FormArray;
     if (e.checked) {
-      let item = <optionItem>{
+      const item = <optionItem>{
         item: e.source.value,
         included: false,
         required: false,
@@ -143,7 +143,7 @@ export class OptionItemComponent implements OnInit {
     } else {
       checkArray.removeAt(
         checkArray.controls.findIndex(
-          (x) => (<optionItem>x.value).item == e.source.value
+          (x) => (<optionItem>x.value).item === e.source.value
         )
       );
     }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Configuration } from 'src/core/configuration';
-import { categoryItem } from '../interfaces/categories.interface';
+import { CategoryItem } from '../interfaces/categories.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class CategoriesService {
     return this.http.get<any>(`${Configuration.ApiUrl}/api/v1/categories`);
   }
 
-  createNewCategory(category: categoryItem) {
+  createNewCategory(category: CategoryItem) {
     return this.http.post(
       `${Configuration.ApiUrl}/api/v1/categories`,
       category

@@ -12,7 +12,7 @@ import {
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { switchMap } from 'rxjs/operators';
-import { imageUploadService } from 'src/core/services/imageUpload.service';
+import { ImageUploadService } from 'src/core/services/imageUpload.service';
 import { BehaviorSubject } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
 
@@ -31,7 +31,7 @@ export class NewProductDesktopComponent implements OnInit {
   categories$ = new BehaviorSubject<Category>(undefined);
   constructor(
     private fb: FormBuilder,
-    private imageService: imageUploadService,
+    private imageService: ImageUploadService,
     private sanitizer: DomSanitizer,
     private _cfr: ComponentFactoryResolver,
     private categoriesService: CategoriesService,

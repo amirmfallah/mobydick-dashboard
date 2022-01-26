@@ -1,5 +1,5 @@
 import { switchMap } from 'rxjs/operators';
-import { imageUploadService } from './../../../core/services/imageUpload.service';
+import { ImageUploadService } from './../../../core/services/imageUpload.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -19,7 +19,7 @@ export class CreateNewCategoryComponent implements OnInit {
   });
   preview = undefined;
   constructor(
-    private imageService: imageUploadService,
+    private imageService: ImageUploadService,
     private fb: FormBuilder,
     private categoriesService: CategoriesService,
     private sanitizer: DomSanitizer

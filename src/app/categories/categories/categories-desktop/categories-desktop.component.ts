@@ -3,7 +3,7 @@ import { CreateNewCategoryComponent } from './../../../dialogs/create-new-catego
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { categoryItem } from '../../interfaces/categories.interface';
+import { CategoryItem } from '../../interfaces/categories.interface';
 import { CategoriesService } from '../../services/categories.service';
 
 @Component({
@@ -16,10 +16,10 @@ export class CategoriesDesktopComponent implements OnInit {
     private categoryService: CategoriesService,
     private dialog: MatDialog
   ) {}
-  categories = new BehaviorSubject<categoryItem[]>(undefined);
+  categories = new BehaviorSubject<CategoryItem[]>(undefined);
 
   ngOnInit(): void {
-    this.categoryService.getAllCategories().subscribe((res: categoryItem[]) => {
+    this.categoryService.getAllCategories().subscribe((res: CategoryItem[]) => {
       this.categories.next(res);
     });
   }

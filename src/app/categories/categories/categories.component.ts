@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GridBreakpointObserverService } from 'src/core/services/grid-breakpoint-observer.service';
@@ -8,7 +8,7 @@ import { GridBreakpointObserverService } from 'src/core/services/grid-breakpoint
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss'],
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent implements OnInit, OnDestroy {
   public viewFileDesktopVisible$: Observable<boolean>;
   public viewFileTabletVisible$: Observable<boolean>;
   public viewFileMobileVisible$: Observable<boolean>;

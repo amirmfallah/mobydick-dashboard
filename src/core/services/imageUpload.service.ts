@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class imageUploadService {
+export class ImageUploadService {
   constructor(private http: HttpClient) {}
   uploadImage(image: File) {
     return this.http.post(

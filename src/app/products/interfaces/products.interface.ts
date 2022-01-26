@@ -52,6 +52,14 @@ export interface ProductUnpopulated {
   optional?: Array<IngredientItemUnpopulated>;
 }
 
+export interface productsResponse {
+  items: ProductUnpopulated[];
+  pages: number;
+  limit: number;
+  count: number;
+  currentPage: number;
+}
+
 export interface Category {
   _id: string;
   name: string;

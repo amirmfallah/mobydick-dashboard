@@ -1,8 +1,12 @@
 import { switchMap } from 'rxjs/operators';
-import { ProductUnpopulated } from './../../interfaces/products.interface';
+import {
+  ProductUnpopulated,
+  productsResponse,
+} from './../../interfaces/products.interface';
 import { BehaviorSubject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'mbd-all-products-desktop',
@@ -11,13 +15,23 @@ import { ProductsService } from '../../services/products.service';
 })
 export class AllProductsDesktopComponent implements OnInit {
   products = new BehaviorSubject<ProductUnpopulated[]>(undefined);
+  pages = new BehaviorSubject<number>(undefined);
+  limit = new BehaviorSubject<number>(undefined);
+  count = new BehaviorSubject<number>(undefined);
+  currentPage = new BehaviorSubject<number>(undefined);
+  pageEvent: PageEvent;
+
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
     this.productsService
-      .getAllProducts()
-      .subscribe((res: ProductUnpopulated[]) => {
-        this.products.next(res);
+      .getAllProducts(1)
+      .subscribe((res: productsResponse) => {
+        this.products.next(res.items);
+        this.pages.next(res.pages);
+        this.limit.next(res.limit);
+        this.count.next(res.count);
+        this.currentPage.next(res.currentPage);
       });
   }
 
@@ -32,5 +46,18 @@ export class AllProductsDesktopComponent implements OnInit {
       .subscribe((res: ProductUnpopulated[]) => {
         this.products.next(res);
       });
+  }
+
+  updateData(event?: PageEvent) {
+    this.productsService
+      .getAllProducts(event.pageIndex + 1)
+      .subscribe((res: productsResponse) => {
+        this.products.next(res.items);
+        this.pages.next(res.pages);
+        this.limit.next(res.limit);
+        this.count.next(res.count);
+        this.currentPage.next(res.currentPage);
+      });
+    return event;
   }
 }

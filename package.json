@@ -8,7 +8,7 @@
     "test": "ng test",
     "e2e": "ng e2e",
     "format:fix": "pretty-quick --staged",
-    "precommit": "run-s format:fix lint",
+    "precommit": "run-s format:fix",
     "lint": "ng lint",
     "format:check": "prettier --config ./.prettierrc --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}\"",
     "prepare": "husky install"
