@@ -1,6 +1,6 @@
 import { SignUp } from './../../app/auth/shared/authentication.interface';
 import { Configuration } from '../configuration';
-import { Tokens } from '../core.interface';
+import { Role, Tokens } from '../core.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
@@ -12,8 +12,10 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
-  private loggedUser: string;
+  private readonly ROLES = 'ROLES';
 
+  private loggedUser: string;
+  public roles: Array<Role>;
   constructor(private http: HttpClient) {}
 
   signup(user: SignUp): Observable<any> {
@@ -28,10 +30,14 @@ export class AuthService {
       .post<any>(`${Configuration.ApiUrl}/api/v1/auth/password/login`, user)
       .pipe(
         tap((res) =>
-          this.doLoginUser(user.username, {
-            token: res.accessToken,
-            refreshToken: res.refreshToken,
-          })
+          this.doLoginUser(
+            user.username,
+            {
+              token: res.accessToken,
+              refreshToken: res.refreshToken,
+            },
+            res.roles
+          )
         )
       );
   }
@@ -60,9 +66,9 @@ export class AuthService {
     return localStorage.getItem(this.JWT_TOKEN);
   }
 
-  private doLoginUser(username: string, tokens: Tokens): void {
+  private doLoginUser(username: string, tokens: Tokens, roles: Role[]): void {
     this.loggedUser = username;
-    this.storeTokens(tokens);
+    this.storeTokens(tokens, roles);
   }
 
   private doLogoutUser(): void {
@@ -78,13 +84,20 @@ export class AuthService {
     localStorage.setItem(this.JWT_TOKEN, token);
   }
 
-  private storeTokens(tokens: Tokens): void {
+  private storeTokens(tokens: Tokens, roles: Role[]): void {
     localStorage.setItem(this.JWT_TOKEN, tokens.token);
     localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
+    localStorage.setItem(this.ROLES, JSON.stringify(roles));
   }
 
   private removeTokens(): void {
     localStorage.removeItem(this.JWT_TOKEN);
     localStorage.removeItem(this.REFRESH_TOKEN);
+    localStorage.removeItem(this.ROLES);
+  }
+
+  hasAccess(role: Role) {
+    const roles = <Array<Role>>JSON.parse(localStorage.getItem(this.ROLES));
+    return roles.includes(role);
   }
 }

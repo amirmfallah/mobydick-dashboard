@@ -6,13 +6,18 @@
   border-radius: 24px;
   padding: 12px;
 }
-.headset {
+.headset,
+.logout {
   padding: 12px;
   width: 48px;
   height: 48px;
   background: var(--mbd-layer2) !important;
   border-radius: 24px;
   box-shadow: none !important;
+}
+.logout {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 .branch {
   padding: 0px 12px;

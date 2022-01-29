@@ -25,7 +25,7 @@ export class AllProductsDesktopComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsService
-      .getAllProducts(1)
+      .getAllProducts(0)
       .subscribe((res: productsResponse) => {
         this.products.next(res.items);
         this.pages.next(res.pages);
@@ -50,7 +50,7 @@ export class AllProductsDesktopComponent implements OnInit {
 
   updateData(event?: PageEvent) {
     this.productsService
-      .getAllProducts(event.pageIndex + 1)
+      .getAllProducts(event.pageIndex)
       .subscribe((res: productsResponse) => {
         this.products.next(res.items);
         this.pages.next(res.pages);

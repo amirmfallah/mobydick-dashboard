@@ -15,6 +15,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 import {
   MatExpansionModule,
@@ -35,6 +37,8 @@ import { OptionItemComponent } from './option-item/option-item.component';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    MatPaginatorModule,
+    MatTableModule,
     ReactiveFormsModule,
     MatProgressBarModule,
     MatSelectModule,
@@ -63,6 +67,8 @@ import { OptionItemComponent } from './option-item/option-item.component';
     MatTabsModule,
     OptionItemComponent,
     MatSnackBarModule,
+    MatPaginatorModule,
+    MatTableModule,
   ],
 })
 export class UiKitModule {}

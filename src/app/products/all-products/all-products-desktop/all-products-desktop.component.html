@@ -2,7 +2,8 @@
   <div
     class="d-flex flex-row justify-content-between align-items-center header"
   >
-    <h2>محصولات ها</h2>
+    <h2><span class="last-path">خانه / </span>محصولات ها</h2>
+
     <button
       mat-flat-button
       color="primary"
@@ -11,40 +12,43 @@
       افزدن محصول
     </button>
   </div>
-  <div
-    class="d-flex flex-row justify-content-between align-items-center pl-3 pr-2 pb-3"
-  >
-    <h3>نام محصول</h3>
-    <h3>عملیات</h3>
-  </div>
-  <div class="d-flex flex-column w-100 h-100 overflow auto">
+
+  <div class="d-flex flex-column w-100 table">
+    <div
+      class="table-header d-flex flex-row justify-content-between align-items-center"
+    >
+      <p class="font-weight-bold">نام محصول</p>
+      <div class="search-input d-flex flex-row">
+        <input type="text" placeholder="جست‌وجو..." />
+        <mat-icon>search</mat-icon>
+      </div>
+      <p style="min-width: 145px; text-align: center" class="font-weight-bold">
+        عملیات
+      </p>
+    </div>
     <div
       class="item d-flex flex-row justify-content-between align-items-center"
       *ngFor="let product of products | async"
     >
       <div class="d-flex flex-row align-items-center">
         <img [src]="product.thumbnail" alt="" class="thumbnail" />
-        <h2 class="mr-3">{{ product.name }}</h2>
+        <p class="mr-3">{{ product.name }}</p>
       </div>
       <div>
         <button mat-flat-button class="ml-2 edit">ویرایش</button>
-        <button
-          mat-flat-button
-          color="warn"
-          class="ml-3"
-          (click)="delete(product._id)"
-        >
+        <button mat-flat-button color="warn" (click)="delete(product._id)">
           حذف
         </button>
       </div>
     </div>
+    <mat-paginator
+      [length]="count | async"
+      [pageSize]="limit | async"
+      [pageSizeOptions]="[10]"
+      aria-label="Select page"
+      (page)="pageEvent = updateData($event)"
+      class="paginator"
+    >
+    </mat-paginator>
   </div>
-  <mat-paginator
-    [length]="count | async"
-    [pageSize]="limit | async"
-    [pageSizeOptions]="[10]"
-    aria-label="Select page"
-    (page)="pageEvent = updateData($event)"
-  >
-  </mat-paginator>
 </div>

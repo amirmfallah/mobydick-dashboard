@@ -79,3 +79,8 @@ p {
     color: #398433;
   }
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}

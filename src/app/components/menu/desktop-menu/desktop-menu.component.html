@@ -1,39 +1,53 @@
 <div class="d-flex flex-column align-items-center right-frame flex-fill">
-  <div class="d-flex org">
-    <img src="/assets/menu/caffe.svg" alt="caffe" class="org-img" />
-    <div class="d-flex flex-column flex-fill">
-      <p class="org-name">موبی‌دیک</p>
-      <p class="org-address">
-        شعبه گلسار
-      </p>
-    </div>
+  <div
+    class="menu-header d-flex w-100 flex-column align-items-center justify-content-center"
+  >
+    <img src="/assets/icons/icon-192x192.png" alt="" />
+    <h2 class="mt-3 font-weight-bold">موبیدیک</h2>
   </div>
 
   <div class="d-flex flex-column menu">
-
-    <div class="d-flex justify-content-center align-items-center nav-item" (click)="onNavItemClicked('products')"
-      [routerLink]="['/', 'categories']" routerLinkActive="focused">
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('products')"
+      [routerLink]="['/', 'categories']"
+      routerLinkActive="focused"
+    >
       <mat-icon>layers</mat-icon>
       <p>دسته‌بندی‌ ها</p>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center nav-item" (click)="onNavItemClicked('products')"
-      [routerLink]="['/', 'products']" routerLinkActive="focused">
+    <div
+      *ngIf="hasSuperAccess()"
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('products')"
+      [routerLink]="['/', 'products']"
+      routerLinkActive="focused"
+    >
       <mat-icon>fastfood</mat-icon>
       <p>محصولات</p>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center nav-item" (click)="onNavItemClicked('orders')">
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('orders')"
+    >
       <mat-icon>ballot</mat-icon>
       <p>سفارشات</p>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center nav-item" (click)="onNavItemClicked('management')">
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('management')"
+    >
       <mat-icon>group</mat-icon>
       <p>مدیریت مشتری</p>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center nav-item" (click)="onNavItemClicked('settings')">
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('settings')"
+    >
       <mat-icon>settings</mat-icon>
       <p>تنظیمات</p>
     </div>
