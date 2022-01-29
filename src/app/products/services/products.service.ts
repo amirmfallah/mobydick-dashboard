@@ -6,10 +6,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ProductsService {
   constructor(private http: HttpClient) {}
-  getAllProducts(page?: number): Observable<any> {
+  getAllProducts(page?: number, search?: string): Observable<any> {
     let params = new HttpParams();
     if (page) {
       params = params.append('page', page.toString());
+    }
+    if (search) {
+      params = params.append('search', search);
     }
     return this.http.get<any>(`${Configuration.ApiUrl}/api/v1/products`, {
       params: params,

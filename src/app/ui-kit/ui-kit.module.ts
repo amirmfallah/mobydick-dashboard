@@ -1,6 +1,6 @@
 import { DragDropDirective } from './../dialogs/directive/drag-drop.directive';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -47,6 +47,7 @@ import { OptionItemComponent } from './option-item/option-item.component';
     MatRadioModule,
     MatExpansionModule,
     MatTabsModule,
+    FormsModule,
     MatSnackBarModule,
   ],
   exports: [
@@ -67,6 +68,7 @@ import { OptionItemComponent } from './option-item/option-item.component';
     MatTabsModule,
     OptionItemComponent,
     MatSnackBarModule,
+    FormsModule,
     MatPaginatorModule,
     MatTableModule,
   ],

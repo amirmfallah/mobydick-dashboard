@@ -1,9 +1,9 @@
-import { switchMap } from 'rxjs/operators';
+import { debounce, map, switchMap } from 'rxjs/operators';
 import {
   ProductUnpopulated,
   productsResponse,
 } from './../../interfaces/products.interface';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, interval, Subject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { PageEvent } from '@angular/material/paginator';
@@ -20,8 +20,27 @@ export class AllProductsDesktopComponent implements OnInit {
   count = new BehaviorSubject<number>(undefined);
   currentPage = new BehaviorSubject<number>(undefined);
   pageEvent: PageEvent;
-
-  constructor(private productsService: ProductsService) {}
+  $search = new Subject();
+  searchExp: string = '';
+  constructor(private productsService: ProductsService) {
+    this.$search
+      .pipe(
+        debounce(() => interval(1000)),
+        map((exp: string) =>
+          this.productsService
+            .getAllProducts(0, exp)
+            .subscribe((res: productsResponse) => {
+              console.log(res);
+              this.products.next(res.items);
+              this.pages.next(res.pages);
+              this.limit.next(res.limit);
+              this.count.next(res.count);
+              this.currentPage.next(res.currentPage);
+            })
+        )
+      )
+      .subscribe();
+  }
 
   ngOnInit(): void {
     this.productsService
@@ -59,5 +78,10 @@ export class AllProductsDesktopComponent implements OnInit {
         this.currentPage.next(res.currentPage);
       });
     return event;
+  }
+
+  search(e) {
+    console.log(this.searchExp);
+    this.$search.next(this.searchExp);
   }
 }

@@ -2,7 +2,7 @@
   <div
     class="d-flex flex-row justify-content-between align-items-center header"
   >
-    <h2><span class="last-path">خانه / </span>محصولات ها</h2>
+    <h2><span class="last-path">خانه / </span>محصولات</h2>
 
     <button
       mat-flat-button
@@ -19,7 +19,12 @@
     >
       <p class="font-weight-bold">نام محصول</p>
       <div class="search-input d-flex flex-row">
-        <input type="text" placeholder="جست‌وجو..." />
+        <input
+          type="text"
+          placeholder="جست‌وجو..."
+          (input)="search($event)"
+          [(ngModel)]="this.searchExp"
+        />
         <mat-icon>search</mat-icon>
       </div>
       <p style="min-width: 145px; text-align: center" class="font-weight-bold">
