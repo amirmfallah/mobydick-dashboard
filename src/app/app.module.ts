@@ -14,9 +14,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { CategoriesModule } from './categories/categories.module';
 import { IngredientsService } from 'src/core/services/ingredients.service';
 import { CategoriesService } from './categories/services/categories.service';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent],
+  declarations: [AppComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -29,6 +30,7 @@ import { CategoriesService } from './categories/services/categories.service';
     DialogsModule,
     StaffModule,
     CategoriesModule,
+    DashboardModule,
   ],
   providers: [IngredientsService, CategoriesService],
   bootstrap: [AppComponent],

@@ -9,6 +9,16 @@
   <div class="d-flex flex-column menu">
     <div
       class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('dashboard')"
+      [routerLink]="['/', 'dashboard']"
+      routerLinkActive="focused"
+    >
+      <mat-icon>home</mat-icon>
+      <p>خانه</p>
+    </div>
+
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
       (click)="onNavItemClicked('products')"
       [routerLink]="['/', 'categories']"
       routerLinkActive="focused"

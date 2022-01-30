@@ -1,0 +1,157 @@
+<form
+  class="main-container w-100 h-100 overflow-auto"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+>
+  <div class="header">
+    <h2><span class="last-path">خانه / </span>شعبه</h2>
+  </div>
+  <div class="box mb-3 d-flex flex-row">
+    <mat-icon class="ml-2">info</mat-icon>
+    <p>
+      شما در حال حاضر شعبه‌ای ثبت نکرده‌اید. اگر تمایل به راه‌اندازی شعبه جدید
+      دارید لطفا فرم زیر را تکمیل نمایید.
+    </p>
+  </div>
+  <div class="box">
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field
+          class="input w-100 input-margin pl-3"
+          appearance="outline"
+        >
+          <mat-label>نام شعبه</mat-label>
+          <input matInput type="text" required="true" formControlName="name" />
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field
+          class="input w-100 input-margin pl-3"
+          appearance="outline"
+        >
+          <mat-label>آدرس</mat-label>
+          <input
+            matInput
+            type="text"
+            required="true"
+            formControlName="address"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="input w-100 input-margin" appearance="outline">
+          <mat-label>شماره تماس شعبه</mat-label>
+          <input matInput type="tel" required="true" formControlName="phone" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="preview-container">
+          <div
+            fileUpload
+            (click)="fileInput.click()"
+            (FileDropped)="fileDropped($event)"
+            class="uploadfilecontainer d-flex"
+            [ngClass]="{ 'drag-drop-zone': files.length === 0 && !preview }"
+          >
+            <div *ngIf="files.length === 0 && !preview" class="drag-drop-text">
+              <div>
+                <mat-icon fontSet="material-icons-round" class="drag-drop-icon"
+                  >cloud_upload</mat-icon
+                >
+              </div>
+              <span class="mat-body-1">عکس موردنظر را به اینجا بکشید. *</span>
+            </div>
+            <div *ngIf="files.length !== 0 || preview" class="w-100">
+              <img [src]="preview" alt="" class="thumbnail h-100" />
+            </div>
+
+            <input
+              hidden
+              type="file"
+              accept="image/png, image/jpeg"
+              #fileInput
+              (change)="fileDropped($event.target.files)"
+            />
+          </div>
+          <button
+            *ngIf="files.length !== 0 || preview"
+            mat-icon-button
+            (click)="removeFile(0, $event)"
+            color="warn"
+            class="remove-btn"
+          >
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="map pl-3">
+          <div id="newMap" class="map-container"></div>
+          <button
+            mat-mini-fab
+            class="loc"
+            color="primary"
+            type="button"
+            (click)="$getLocation.next('')"
+          >
+            <mat-icon matSuffix fontSet="material-icons-round"
+              >gps_fixed</mat-icon
+            >
+          </button>
+        </div>
+      </div>
+      <div class="col-4 col h-100">
+        <mat-form-field class="w-100 textbox" appearance="outline">
+          <mat-label>توضیحات شعبه</mat-label>
+          <textarea
+            matInput
+            placeholder=""
+            required="true"
+            cols="30"
+            rows="11"
+            formControlName="description"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="d-flex flex-column w-100">
+      <mat-checkbox required="true" color="primary" formControlName="required"
+        >با <span class="terms">شرایط و قوانین</span> موافق هستم.
+      </mat-checkbox>
+      <div class="w-100">
+        <button
+          mat-flat-button
+          *ngIf="!hasBranch"
+          color="primary"
+          type="submit"
+          [disabled]="this.form.disabled"
+          [class.loading]="form.disabled"
+          class="w-100"
+        >
+          ثبت درخواست
+        </button>
+        <button
+          mat-flat-button
+          *ngIf="hasBranch"
+          color="primary"
+          type="button"
+          (click)="patch()"
+          [disabled]="this.form.disabled"
+          [class.loading]="form.disabled"
+          class="w-100"
+        >
+          به روزرسانی درخواست
+        </button>
+        <mat-progress-bar
+          class="w-100"
+          mode="query"
+          [class.invisible]="!form.disabled"
+          [class.visible]="form.disabled"
+        >
+        </mat-progress-bar>
+      </div>
+    </div>
+  </div>
+</form>

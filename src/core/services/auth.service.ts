@@ -1,3 +1,4 @@
+import { BranchesService } from 'src/core/services/branches.service';
 import { SignUp } from './../../app/auth/shared/authentication.interface';
 import { Configuration } from '../configuration';
 import { Role, Tokens } from '../core.interface';
@@ -13,6 +14,7 @@ export class AuthService {
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private readonly ROLES = 'ROLES';
+  private readonly BRANCH_ID = 'BRANCH_ID';
 
   private loggedUser: string;
   public roles: Array<Role>;

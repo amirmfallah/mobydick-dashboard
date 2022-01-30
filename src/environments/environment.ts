@@ -7,6 +7,7 @@ export const environment = {
   ApiUrl: 'https://beta-api.mobydickfoods.com',
   ImageProcessorUrl:
     'https://mobydick-image-processor-mobydick.apps.ir-thr-at1.arvan.run',
+  NeshanWebMapApiToken: 'web.SJFu4qzp7zEIHMCpo2sRt1gTehcofEOxDle0t1C9',
 };
 
 /*
