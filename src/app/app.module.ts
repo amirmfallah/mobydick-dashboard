@@ -1,3 +1,4 @@
+import { IngredientsModule } from './ingredients/ingredients.module';
 import { StaffModule } from './staff/staff.module';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { ComponentsModule } from './components/components.module';
@@ -34,6 +35,7 @@ import { CustomPaginator } from 'src/core/CustomPaginatorConfiguration';
     StaffModule,
     CategoriesModule,
     DashboardModule,
+    IngredientsModule,
   ],
   providers: [
     IngredientsService,

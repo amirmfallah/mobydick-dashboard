@@ -2,18 +2,16 @@
   <div
     class="d-flex flex-row justify-content-between align-items-center header"
   >
-    <h2><span class="last-path">خانه / </span>دسته‌بندی ها</h2>
+    <h2><span class="last-path">خانه / </span>محتویات</h2>
 
-    <button mat-flat-button color="primary" (click)="openNewCategoryDialog()">
-      افزدن دسته‌بندی
-    </button>
+    <button mat-flat-button color="primary">افزدن محتویات</button>
   </div>
 
   <div class="d-flex flex-column w-100 table">
     <div
       class="table-header d-flex flex-row justify-content-between align-items-center"
     >
-      <p class="font-weight-bold">نام دسته‌بندی</p>
+      <p class="font-weight-bold">نام محتویات</p>
       <div class="search-input d-flex flex-row">
         <input
           type="text"
@@ -29,15 +27,15 @@
     </div>
     <div
       class="item d-flex flex-row justify-content-between align-items-center"
-      *ngFor="let cat of categories | async"
+      *ngFor="let ing of ingredients | async"
     >
       <div class="d-flex flex-row align-items-center">
-        <img [src]="cat.thumbnail" alt="" class="thumbnail" />
-        <p class="mr-3">{{ cat.name }}</p>
+        <img [src]="ing.thumbnail" alt="" class="thumbnail" />
+        <p class="mr-3">{{ ing.name }}</p>
       </div>
       <div>
         <button mat-flat-button class="ml-2 edit">ویرایش</button>
-        <button mat-flat-button color="warn" (click)="delete(cat._id)">
+        <button mat-flat-button color="warn" (click)="delete(ing._id)">
           حذف
         </button>
       </div>

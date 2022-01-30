@@ -1,3 +1,4 @@
+import { searchResponse } from './../../../core/interfaces/shared.interfaces';
 import { filter } from 'rxjs/operators';
 import {
   Ingredients,
@@ -56,8 +57,8 @@ export class OptionItemComponent implements OnInit {
 
     this.ingredientsService
       .getAllIngredients()
-      .subscribe((items: Ingredients[]) => {
-        this.ingredients$.next(items);
+      .subscribe((items: searchResponse<Ingredients>) => {
+        this.ingredients$.next(items.items);
       });
   }
 

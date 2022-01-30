@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Configuration } from 'src/core/configuration';
@@ -10,8 +10,17 @@ import { CategoryItem } from '../interfaces/categories.interface';
 export class CategoriesService {
   constructor(private http: HttpClient) {}
 
-  getAllCategories(): Observable<any> {
-    return this.http.get<any>(`${Configuration.ApiUrl}/api/v1/categories`);
+  getAllCategories(page?: number, search?: string): Observable<any> {
+    let params = new HttpParams();
+    if (page) {
+      params = params.append('page', page.toString());
+    }
+    if (search) {
+      params = params.append('search', search);
+    }
+    return this.http.get<any>(`${Configuration.ApiUrl}/api/v1/categories`, {
+      params: params,
+    });
   }
 
   createNewCategory(category: CategoryItem) {

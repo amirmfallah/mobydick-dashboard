@@ -27,6 +27,15 @@
 
     <div
       class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('ingredients')"
+      routerLinkActive="focused"
+    >
+      <mat-icon>category</mat-icon>
+      <p>محتویات</p>
+    </div>
+
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
       (click)="onNavItemClicked('products')"
       routerLinkActive="focused"
     >

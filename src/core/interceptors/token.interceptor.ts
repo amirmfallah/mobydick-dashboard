@@ -1,3 +1,4 @@
+import { NotificationService } from 'src/core/services/notification.service';
 import { AuthService } from '../services/auth.service';
 import { Injectable } from '@angular/core';
 import {
@@ -17,7 +18,10 @@ export class TokenInterceptor implements HttpInterceptor {
     null
   );
 
-  constructor(public authService: AuthService) {}
+  constructor(
+    public authService: AuthService,
+    private notificationService: NotificationService
+  ) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -31,6 +35,10 @@ export class TokenInterceptor implements HttpInterceptor {
       catchError((error) => {
         if (error instanceof HttpErrorResponse && error.status === 401) {
           return this.handle401Error(request, next);
+        } else if (error instanceof HttpErrorResponse && error.status === 403) {
+          this.notificationService.show(
+            'شما دسترسی کافی برای انجام این کار را ندارید.'
+          );
         } else {
           return throwError(error);
         }

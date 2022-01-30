@@ -1,3 +1,4 @@
+import { IngredientsModule } from './ingredients/ingredients.module';
 import { StaffComponent } from './staff/staff.component';
 import { ToolbarDesktopComponent } from './components/toolbar/toolbar-desktop/toolbar-desktop.component';
 import { SignedInGuard } from './auth/guards/signed-in.guard';
@@ -26,6 +27,14 @@ const routes: Routes = [
     canActivate: [SignedInGuard],
     loadChildren: () =>
       import('./products/products.module').then((m) => m.ProductsModule),
+  },
+  {
+    path: 'ingredients',
+    canActivate: [SignedInGuard],
+    loadChildren: () =>
+      import('./ingredients/ingredients.module').then(
+        (m) => m.IngredientsModule
+      ),
   },
 ];
 
