@@ -11,7 +11,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class BranchesService {
-  branch = new BehaviorSubject<branch>(undefined);
+  branch = new BehaviorSubject<any>(false);
 
   constructor(private http: HttpClient) {}
 

@@ -10,7 +10,6 @@
     <div
       class="d-flex justify-content-center align-items-center nav-item"
       (click)="onNavItemClicked('dashboard')"
-      [routerLink]="['/', 'dashboard']"
       routerLinkActive="focused"
     >
       <mat-icon>home</mat-icon>
@@ -19,8 +18,7 @@
 
     <div
       class="d-flex justify-content-center align-items-center nav-item"
-      (click)="onNavItemClicked('products')"
-      [routerLink]="['/', 'categories']"
+      (click)="onNavItemClicked('categories')"
       routerLinkActive="focused"
     >
       <mat-icon>layers</mat-icon>
@@ -28,10 +26,8 @@
     </div>
 
     <div
-      *ngIf="hasSuperAccess()"
       class="d-flex justify-content-center align-items-center nav-item"
       (click)="onNavItemClicked('products')"
-      [routerLink]="['/', 'products']"
       routerLinkActive="focused"
     >
       <mat-icon>fastfood</mat-icon>

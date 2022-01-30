@@ -1,3 +1,4 @@
+import { BranchesService } from 'src/core/services/branches.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toolbar-desktop.component.scss'],
 })
 export class ToolbarDesktopComponent implements OnInit {
-  constructor() {}
+  constructor(private branchesService: BranchesService) {}
 
   ngOnInit(): void {}
+  getBranch() {
+    return this.branchesService.getBranch();
+  }
 }

@@ -9,10 +9,11 @@
     <div class="d-flex align-items-center justify-content-center home">
       <mat-icon>home</mat-icon>
     </div>
-    <p class="branch-p">شعبه 1</p>
-    <button class="d-flex align-items-center justify-content-center arrow">
-      <mat-icon class="icon">keyboard_arrow_down</mat-icon>
-    </button>
+    <p class="branch-p">
+      {{
+        (getBranch() | async) ? (getBranch() | async).name : "شعبه‌ای ندارید"
+      }}
+    </p>
   </div>
   <button
     mat-mini-fab

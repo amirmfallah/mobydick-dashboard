@@ -15,6 +15,9 @@ import { CategoriesModule } from './categories/categories.module';
 import { IngredientsService } from 'src/core/services/ingredients.service';
 import { CategoriesService } from './categories/services/categories.service';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { NotificationService } from '../core/services/notification.service';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { CustomPaginator } from 'src/core/CustomPaginatorConfiguration';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +35,12 @@ import { DashboardModule } from './dashboard/dashboard.module';
     CategoriesModule,
     DashboardModule,
   ],
-  providers: [IngredientsService, CategoriesService],
+  providers: [
+    IngredientsService,
+    CategoriesService,
+    NotificationService,
+    { provide: MatPaginatorIntl, useValue: CustomPaginator() },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
