@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ToolbarDesktopComponent } from './toolbar/toolbar-desktop/toolbar-desktop.component';
 import { TabletMenuComponent } from './menu/tablet-menu/tablet-menu.component';
+import { NeshanMapComponent } from './neshan-map/neshan-map.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { TabletMenuComponent } from './menu/tablet-menu/tablet-menu.component';
     DesktopMenuComponent,
     ToolbarDesktopComponent,
     TabletMenuComponent,
+    NeshanMapComponent,
   ],
   imports: [CommonModule, MatIconModule, UiKitModule, RouterModule],
   exports: [
@@ -21,6 +23,7 @@ import { TabletMenuComponent } from './menu/tablet-menu/tablet-menu.component';
     DesktopMenuComponent,
     ToolbarDesktopComponent,
     TabletMenuComponent,
+    NeshanMapComponent,
   ],
 })
 export class ComponentsModule {}

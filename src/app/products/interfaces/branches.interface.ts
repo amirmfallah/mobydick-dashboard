@@ -7,10 +7,14 @@ export interface branch {
   sliderPictures?: string[];
   status?: boolean;
   verified?: boolean;
-  ownerId?: string;
+  ownerId?: User;
   address: Address;
 }
 
+export interface User {
+  name: string;
+  phone: string;
+}
 export interface Address {
   address: string;
   lat: number;
@@ -18,4 +22,17 @@ export interface Address {
   phone: string;
   description: string;
   open: boolean;
+}
+
+export interface patchBranch {
+  _id?: string;
+  name?: string;
+  description?: string;
+  thumbnail?: string;
+  favoriteProducts?: string[];
+  sliderPictures?: string[];
+  status?: boolean;
+  verified?: boolean;
+  ownerId?: User;
+  address?: Address;
 }

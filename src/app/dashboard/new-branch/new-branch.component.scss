@@ -90,6 +90,23 @@ $primary: var(--mbd-primary);
   border-radius: 8px;
 }
 
+.map {
+  position: relative;
+}
+
+.loc {
+  border-radius: 8px 0 8px 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: none;
+}
+.loading {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .textbox {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -115,21 +132,4 @@ $primary: var(--mbd-primary);
 
 .last-path {
   opacity: 0.64;
-}
-
-.map {
-  position: relative;
-}
-
-.loc {
-  border-radius: 8px 0 8px 0;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 1000;
-  box-shadow: none;
-}
-.loading {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
 }

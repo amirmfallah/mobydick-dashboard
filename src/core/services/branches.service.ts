@@ -3,7 +3,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Configuration } from './../configuration';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { branch } from 'src/app/products/interfaces/branches.interface';
+import {
+  branch,
+  patchBranch,
+} from 'src/app/products/interfaces/branches.interface';
 import * as _ from 'lodash';
 import { __createBinding } from 'tslib';
 import { tap } from 'rxjs/operators';
@@ -34,9 +37,15 @@ export class BranchesService {
     return this.branch;
   }
 
-  patchBranch(branch: branch) {
+  patchBranch(branch: patchBranch) {
     return this.http.patch(
       `${Configuration.ApiUrl}/api/v1/branches/${branch._id}`,
+      branch
+    );
+  }
+  patchBranchSuper(branch: patchBranch) {
+    return this.http.patch(
+      `${Configuration.ApiUrl}/api/v1/branches/super/${branch._id}`,
       branch
     );
   }

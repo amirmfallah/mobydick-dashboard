@@ -1,0 +1,65 @@
+<form [formGroup]="form">
+  <h2 mat-dialog-title class="d-flex justify-content-start header">
+    مشاهده اطلاعات شعبه
+  </h2>
+
+  <div mat-dialog-content class="d-flex flex-column dialog-container mt-3">
+    <div class="row mb-3">
+      <div class="col-6">
+        <mbd-neshan-map
+          [lat]="this.form.value.lng"
+          [lng]="this.form.value.lat"
+        ></mbd-neshan-map>
+      </div>
+      <div class="col-6">
+        <img [src]="this.form.value.thumbnail" alt="" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <p>
+          <span class="font-weight-bold">نام صاحب:</span>
+          {{ (this.$branch | async).ownerId.name }}
+        </p>
+        <p>
+          <span class="font-weight-bold">شماره تماس صاحب:</span>
+          {{ (this.$branch | async).ownerId.phone }}
+        </p>
+      </div>
+      <div class="col-6">
+        <p>
+          <span class="font-weight-bold">نام شعبه:</span>
+          {{ (this.$branch | async).name }}
+        </p>
+        <p>
+          <span class="font-weight-bold">توضیحات شعبه:</span>
+          {{ (this.$branch | async).description }}
+        </p>
+        <p>
+          <span class="font-weight-bold">آدرس شعبه:</span>
+          {{ (this.$branch | async).address.address }}
+        </p>
+        <p>
+          <span class="font-weight-bold">شماره تماس شعبه:</span>
+          {{ (this.$branch | async).address.phone }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div mat-dialog-actions class="d-flex btns">
+    <button
+      mat-flat-button
+      color="primary"
+      type="button"
+      (click)="verifyBranch()"
+      class="mbd-button"
+      *ngIf="!(this.$branch | async).verified"
+    >
+      تایید شعبه
+    </button>
+    <button mat-flat-button class="mbd-button" (click)="this.dialogRef.close()">
+      باشه
+    </button>
+  </div>
+</form>

@@ -6,6 +6,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { debounce, map, switchMap } from 'rxjs/operators';
 import { searchResponse } from 'src/core/interfaces/shared.interfaces';
+import { EditBranchDialogComponent } from 'src/app/dialogs/edit-branch-dialog/edit-branch-dialog.component';
 
 @Component({
   selector: 'mbd-all-branches-desktop',
@@ -90,5 +91,14 @@ export class AllBranchesDesktopComponent implements OnInit {
   search(e) {
     console.log(this.searchExp);
     this.$search.next(this.searchExp);
+  }
+
+  editBranch(b: branch) {
+    let dialogRef = this.dialog.open(EditBranchDialogComponent);
+    dialogRef.afterClosed().subscribe(() => {
+      this.updateData(<PageEvent>{ pageIndex: 0 });
+    });
+    console.log(b);
+    dialogRef.componentInstance.$branch.next(b);
   }
 }

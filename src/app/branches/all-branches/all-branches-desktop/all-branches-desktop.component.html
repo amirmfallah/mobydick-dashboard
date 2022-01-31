@@ -35,9 +35,14 @@
           در انتظار تایید
         </div>
       </div>
+      <p *ngIf="!branch.verified">
+        برای مشاهده اطلاعات و تایید شعبه بر روی ویرایش کلیک کنید.
+      </p>
 
       <div>
-        <button mat-flat-button class="ml-2 edit">ویرایش</button>
+        <button mat-flat-button class="ml-2 edit" (click)="editBranch(branch)">
+          ویرایش
+        </button>
         <button mat-flat-button color="warn" (click)="delete(branch._id)">
           حذف
         </button>
