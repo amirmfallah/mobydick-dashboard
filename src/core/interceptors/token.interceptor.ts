@@ -1,4 +1,4 @@
-import { NotificationService } from 'src/core/services/notification.service';
+import { Configuration } from 'src/core/configuration';
 import { AuthService } from '../services/auth.service';
 import { Injectable } from '@angular/core';
 import {
@@ -18,32 +18,32 @@ export class TokenInterceptor implements HttpInterceptor {
     null
   );
 
-  constructor(
-    public authService: AuthService,
-    private notificationService: NotificationService
-  ) {}
+  constructor(public authService: AuthService) {}
 
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (this.authService.getJwtToken()) {
-      request = this.addToken(request, this.authService.getJwtToken());
-    }
+    if (request.url.indexOf(Configuration.ApiUrl) >= 0) {
+      if (this.authService.getJwtToken()) {
+        request = this.addToken(request, this.authService.getJwtToken());
+        this.authService.IsLoggedIn.next(true);
+      }
 
-    return next.handle(request).pipe(
-      catchError((error) => {
-        if (error instanceof HttpErrorResponse && error.status === 401) {
-          return this.handle401Error(request, next);
-        } else if (error instanceof HttpErrorResponse && error.status === 403) {
-          this.notificationService.show(
-            'شما دسترسی کافی برای انجام این کار را ندارید.'
-          );
-        } else {
-          return throwError(error);
-        }
-      })
-    ) as Observable<HttpEvent<any>>;
+      return next.handle(request).pipe(
+        catchError((error) => {
+          if (error instanceof HttpErrorResponse && error.status === 401) {
+            this.authService.logout();
+            window.location.reload();
+            return this.handle401Error(request, next);
+          } else {
+            return throwError(error);
+          }
+        })
+      ) as Observable<HttpEvent<any>>;
+    } else {
+      return next.handle(request);
+    }
   }
 
   private addToken(request: HttpRequest<any>, token: string): HttpRequest<any> {
@@ -69,7 +69,7 @@ export class TokenInterceptor implements HttpInterceptor {
           return next.handle(this.addToken(request, token.token));
         }),
         catchError((error) => {
-          if (error instanceof HttpErrorResponse && error.status === 403) {
+          if (error instanceof HttpErrorResponse) {
             this.authService.logout();
             window.location.reload();
             return null;

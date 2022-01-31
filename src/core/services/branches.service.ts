@@ -1,3 +1,4 @@
+import { searchResponse } from './../interfaces/shared.interfaces';
 import { BehaviorSubject } from 'rxjs';
 import { Configuration } from './../configuration';
 import { HttpClient } from '@angular/common/http';
@@ -26,13 +27,7 @@ export class BranchesService {
   }
 
   getMyBranch() {
-    return this.http.get(`${Configuration.ApiUrl}/api/v1/branches/owner`).pipe(
-      tap((res: branch) => {
-        if (res !== null) {
-          this.branch.next(res);
-        }
-      })
-    );
+    return this.http.get(`${Configuration.ApiUrl}/api/v1/branches/owner`);
   }
 
   getBranch() {

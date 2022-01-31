@@ -5,7 +5,7 @@ import { Role, Tokens } from '../core.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +15,7 @@ export class AuthService {
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private readonly ROLES = 'ROLES';
   private readonly BRANCH_ID = 'BRANCH_ID';
+  IsLoggedIn = new BehaviorSubject<boolean>(false);
 
   private loggedUser: string;
   public roles: Array<Role>;

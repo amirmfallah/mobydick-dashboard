@@ -1,3 +1,4 @@
+import { BranchesModule } from './branches/branches.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
 import { StaffComponent } from './staff/staff.component';
 import { ToolbarDesktopComponent } from './components/toolbar/toolbar-desktop/toolbar-desktop.component';
@@ -35,6 +36,12 @@ const routes: Routes = [
       import('./ingredients/ingredients.module').then(
         (m) => m.IngredientsModule
       ),
+  },
+  {
+    path: 'branches',
+    canActivate: [SignedInGuard],
+    loadChildren: () =>
+      import('./branches/branches.module').then((m) => m.BranchesModule),
   },
 ];
 
