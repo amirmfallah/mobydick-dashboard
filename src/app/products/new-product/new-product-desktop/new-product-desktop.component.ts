@@ -12,9 +12,9 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { switchMap } from 'rxjs/operators';
+import { delay, switchMap } from 'rxjs/operators';
 import { ImageUploadService } from 'src/core/services/imageUpload.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -57,7 +57,11 @@ export class NewProductDesktopComponent implements OnInit {
       console.log(x);
       this.categories$.next(x);
     });
-    this.addOption();
+    of('')
+      .pipe(delay(100))
+      .subscribe(() => {
+        this.addOption();
+      });
   }
 
   fileDropped(files: FileList): void {
