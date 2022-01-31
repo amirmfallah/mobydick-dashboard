@@ -1,0 +1,56 @@
+<div class="main-container">
+  <div
+    class="d-flex flex-row justify-content-between align-items-center header"
+  >
+    <h2><span class="last-path">خانه / </span>شعبه ها</h2>
+  </div>
+
+  <div class="d-flex flex-column w-100 table">
+    <div
+      class="table-header d-flex flex-row justify-content-between align-items-center"
+    >
+      <p class="font-weight-bold">نام شعبه</p>
+      <div class="search-input d-flex flex-row">
+        <input
+          type="text"
+          placeholder="جست‌وجو..."
+          (input)="search($event)"
+          [(ngModel)]="this.searchExp"
+        />
+        <mat-icon>search</mat-icon>
+      </div>
+      <p style="min-width: 145px; text-align: center" class="font-weight-bold">
+        عملیات
+      </p>
+    </div>
+    <div
+      class="item d-flex flex-row justify-content-between align-items-center"
+      *ngFor="let branch of branches | async"
+    >
+      <div class="d-flex flex-row align-items-center">
+        <img [src]="branch.thumbnail" alt="" class="thumbnail" />
+        <p class="mr-3">{{ branch.name }}</p>
+        <div class="chip verified mr-4" *ngIf="branch.verified">تایید شده</div>
+        <div class="chip not-verified mr-4" *ngIf="!branch.verified">
+          در انتظار تایید
+        </div>
+      </div>
+
+      <div>
+        <button mat-flat-button class="ml-2 edit">ویرایش</button>
+        <button mat-flat-button color="warn" (click)="delete(branch._id)">
+          حذف
+        </button>
+      </div>
+    </div>
+    <mat-paginator
+      [length]="count | async"
+      [pageSize]="limit | async"
+      [pageSizeOptions]="[10]"
+      aria-label="Select page"
+      (page)="pageEvent = updateData($event)"
+      class="paginator"
+    >
+    </mat-paginator>
+  </div>
+</div>

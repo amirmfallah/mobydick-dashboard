@@ -24,12 +24,14 @@ export class DesktopMenuComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onNavItemClicked(item: string): void {
+  onNavItemClicked(item: string, isPublic?: boolean): void {
     this.navItemClicked.emit(item);
     this.itemClicked = item;
     if (
-      this.branchesService.getBranch().value &&
-      this.branchesService.getBranch().value.verified
+      (this.branchesService.getBranch().value &&
+        this.branchesService.getBranch().value.verified) ||
+      this.authService.hasAccess(Role.Super) ||
+      isPublic
     ) {
       this.router.navigate(['/', item]);
       return;

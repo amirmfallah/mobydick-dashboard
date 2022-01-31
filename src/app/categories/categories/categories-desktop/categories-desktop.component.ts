@@ -76,7 +76,7 @@ export class CategoriesDesktopComponent implements OnInit {
 
   updateData(event?: PageEvent) {
     this.categoryService
-      .getAllCategories(0)
+      .getAllCategories(event.pageIndex)
       .subscribe((res: searchResponse<CategoryItem>) => {
         console.log(res);
         this.categories.next(res.items);

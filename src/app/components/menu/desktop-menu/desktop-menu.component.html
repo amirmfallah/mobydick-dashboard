@@ -15,7 +15,14 @@
       <mat-icon>home</mat-icon>
       <p>خانه</p>
     </div>
-
+    <div
+      class="d-flex justify-content-center align-items-center nav-item"
+      (click)="onNavItemClicked('branches')"
+      routerLinkActive="focused"
+    >
+      <mat-icon>place</mat-icon>
+      <p>شعبه ها</p>
+    </div>
     <div
       class="d-flex justify-content-center align-items-center nav-item"
       (click)="onNavItemClicked('categories')"

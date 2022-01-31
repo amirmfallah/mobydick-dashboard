@@ -1,7 +1,7 @@
 import { searchResponse } from './../interfaces/shared.interfaces';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Configuration } from './../configuration';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { branch } from 'src/app/products/interfaces/branches.interface';
 import * as _ from 'lodash';
@@ -39,5 +39,20 @@ export class BranchesService {
       `${Configuration.ApiUrl}/api/v1/branches/${branch._id}`,
       branch
     );
+  }
+  getAllBranches(page?: number, search?: string): Observable<any> {
+    let params = new HttpParams();
+    if (page) {
+      params = params.append('page', page.toString());
+    }
+    if (search) {
+      params = params.append('search', search);
+    }
+    return this.http.get<any>(`${Configuration.ApiUrl}/api/v1/branches`, {
+      params: params,
+    });
+  }
+  deleteBranchById(id: string) {
+    return this.http.delete(`${Configuration.ApiUrl}/api/v1/branches/${id}`);
   }
 }
