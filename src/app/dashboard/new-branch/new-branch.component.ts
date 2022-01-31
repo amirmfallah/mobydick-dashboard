@@ -11,6 +11,7 @@ import { switchMap } from 'rxjs/operators';
 import { BranchesService } from 'src/core/services/branches.service';
 declare var L: any;
 import * as _ from 'lodash';
+import { NotificationService } from 'src/core/services/notification.service';
 
 @Component({
   selector: 'mbd-new-branch',
@@ -31,18 +32,20 @@ export class NewBranchComponent implements OnInit {
     description: [''],
     name: [''],
     thumbnail: [''],
-    required: [''],
+    required: ['', Validators.required],
   });
   branch: branch;
   hasBranch: boolean;
   $load: BehaviorSubject<any>;
+  $error = new BehaviorSubject<string>(undefined);
   constructor(
     private fb: FormBuilder,
     private imageService: ImageUploadService,
     private sanitizer: DomSanitizer,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private branchesService: BranchesService
+    private branchesService: BranchesService,
+    private notificationService: NotificationService
   ) {}
   ngOnInit(): void {
     var newMap = new L.Map('newMap', {
@@ -114,6 +117,16 @@ export class NewBranchComponent implements OnInit {
   }
 
   submit() {
+    if (this.files.length <= 0) {
+      this.notificationService.show('لطفا عکس شعبه را بارگذاری کنید');
+      return;
+    } else if (!this.form.value.required) {
+      this.notificationService.show(
+        'برای ثبت شعبه باید با شرایط و قوانین موافق باشید.'
+      );
+      return;
+    }
+
     if (!this.form.valid) {
       return;
     }

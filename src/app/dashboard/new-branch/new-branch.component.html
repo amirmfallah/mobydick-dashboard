@@ -117,16 +117,20 @@
       </div>
     </div>
     <div class="d-flex flex-column w-100">
-      <mat-checkbox required="true" color="primary" formControlName="required"
+      <mat-checkbox
+        class="my-3"
+        required="true"
+        color="primary"
+        formControlName="required"
         >با <span class="terms">شرایط و قوانین</span> موافق هستم.
       </mat-checkbox>
-      <div class="w-100">
+      <div class="w-100 d-flex align-items-center flex-column">
         <button
           mat-flat-button
           *ngIf="!hasBranch"
           color="primary"
           type="submit"
-          [disabled]="this.form.disabled"
+          [disabled]="this.form.disabled && !this.form.valid"
           [class.loading]="form.disabled"
           class="w-100"
         >
@@ -138,11 +142,11 @@
           color="primary"
           type="button"
           (click)="patch()"
-          [disabled]="this.form.disabled"
+          [disabled]="this.form.disabled && !this.form.valid"
           [class.loading]="form.disabled"
           class="w-100"
         >
-          به روزرسانی درخواست
+          ویرایش درخواست
         </button>
         <mat-progress-bar
           class="w-100"
