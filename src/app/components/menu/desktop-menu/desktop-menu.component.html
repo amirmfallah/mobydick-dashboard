@@ -10,6 +10,7 @@
     <div
       class="d-flex justify-content-center align-items-center nav-item"
       (click)="onNavItemClicked('dashboard')"
+      [class.focused]="itemClicked == 'dashboard'"
       routerLinkActive="focused"
     >
       <mat-icon>home</mat-icon>
@@ -19,6 +20,7 @@
       class="d-flex justify-content-center align-items-center nav-item"
       (click)="onNavItemClicked('branches')"
       routerLinkActive="focused"
+      [class.focused]="itemClicked == 'branches'"
     >
       <mat-icon>place</mat-icon>
       <p>شعبه ها</p>
@@ -27,6 +29,7 @@
       class="d-flex justify-content-center align-items-center nav-item"
       (click)="onNavItemClicked('categories')"
       routerLinkActive="focused"
+      [class.focused]="itemClicked == 'categories'"
     >
       <mat-icon>layers</mat-icon>
       <p>دسته‌بندی‌ ها</p>
@@ -36,6 +39,7 @@
       class="d-flex justify-content-center align-items-center nav-item"
       (click)="onNavItemClicked('ingredients')"
       routerLinkActive="focused"
+      [class.focused]="itemClicked == 'ingredients'"
     >
       <mat-icon>category</mat-icon>
       <p>محتویات</p>
@@ -45,6 +49,7 @@
       class="d-flex justify-content-center align-items-center nav-item"
       (click)="onNavItemClicked('products')"
       routerLinkActive="focused"
+      [class.focused]="itemClicked == 'products'"
     >
       <mat-icon>fastfood</mat-icon>
       <p>محصولات</p>
@@ -53,6 +58,7 @@
     <div
       class="d-flex justify-content-center align-items-center nav-item"
       (click)="onNavItemClicked('orders')"
+      [class.focused]="itemClicked == 'orders'"
     >
       <mat-icon>ballot</mat-icon>
       <p>سفارشات</p>
@@ -61,6 +67,7 @@
     <div
       class="d-flex justify-content-center align-items-center nav-item"
       (click)="onNavItemClicked('management')"
+      [class.focused]="itemClicked == 'management'"
     >
       <mat-icon>group</mat-icon>
       <p>مدیریت مشتری</p>
@@ -69,6 +76,7 @@
     <div
       class="d-flex justify-content-center align-items-center nav-item"
       (click)="onNavItemClicked('settings')"
+      [class.focused]="itemClicked == 'settings'"
     >
       <mat-icon>settings</mat-icon>
       <p>تنظیمات</p>

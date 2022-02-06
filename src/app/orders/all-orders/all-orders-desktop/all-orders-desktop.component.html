@@ -1,0 +1,76 @@
+<div class="main-container">
+  <div
+    class="d-flex flex-row justify-content-between align-items-center header"
+  >
+    <h2><span class="last-path">خانه / </span>سفارشات</h2>
+  </div>
+
+  <div class="d-flex flex-column w-100 table">
+    <div
+      class="table-header d-flex flex-row justify-content-between align-items-center"
+    >
+      <div class="d-flex flex-row">
+        <p class="font-weight-bold mr-3">شماره سفارش</p>
+        <p class="font-weight-bold mr-3">نام</p>
+        <p class="font-weight-bold mr-5">شماره تماس</p>
+        <p class="font-weight-bold mr-4">شعبه</p>
+      </div>
+      <div class="search-input d-flex flex-row">
+        <input
+          type="text"
+          placeholder="جست‌وجو..."
+          (input)="search($event)"
+          [(ngModel)]="this.searchExp"
+        />
+        <mat-icon>search</mat-icon>
+      </div>
+      <p style="min-width: 145px; text-align: center" class="font-weight-bold">
+        عملیات
+      </p>
+    </div>
+    <div
+      class="item d-flex flex-row justify-content-between align-items-center"
+      *ngFor="let order of orders | async"
+    >
+      <div class="d-flex flex-row align-items-center">
+        <p class="mr-3">{{ order.orderId }}</p>
+        <p class="mr-3">{{ order.ownerId.name || "بدون نام" }}</p>
+        <p class="mr-3">{{ order.ownerId.phone }}</p>
+        <p class="mr-3">{{ order.branchId.name }}</p>
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>وضعیت سفارش</mat-label>
+        <mat-select
+          (valueChange)="changeStatus(order._id, $event)"
+          [value]="cartStatus[order.status]"
+        >
+          <mat-option [value]="cartStatus.OPEN">باز</mat-option>
+          <mat-option [value]="cartStatus.REGISTERED">ثبت شده</mat-option>
+          <mat-option [value]="cartStatus.PREPARING"
+            >در حال آماده‌سازی</mat-option
+          >
+          <mat-option [value]="cartStatus.SENT">ارسال شده</mat-option>
+          <mat-option [value]="cartStatus.DELIVERED">تحویل داده شده</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="d-flex flex-row align-items-center">
+        <button
+          mat-flat-button
+          class="edit"
+          [routerLink]="['/', 'orders', order._id]"
+        >
+          مشاهده جزئیات
+        </button>
+      </div>
+    </div>
+    <mat-paginator
+      [length]="count | async"
+      [pageSize]="limit | async"
+      [pageSizeOptions]="[10]"
+      aria-label="Select page"
+      (page)="pageEvent = updateData($event)"
+      class="paginator"
+    >
+    </mat-paginator>
+  </div>
+</div>

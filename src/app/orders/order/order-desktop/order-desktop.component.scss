@@ -1,0 +1,44 @@
+.main-container {
+  padding: 0 48px 48px 48px;
+  .row {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .col-4,
+  .col-8,
+  .col-9,
+  .col-3 {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+.box {
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+}
+
+.cart-item {
+  border: 1px solid rgba(94, 94, 94, 0.212);
+  border-radius: 8px;
+  margin-top: 8px;
+  padding: 0 12px;
+  img {
+    border-radius: 8px;
+  }
+}
+
+.header {
+  margin-bottom: 24px;
+  h2 {
+    font-size: 20px;
+  }
+
+  .last-path {
+    opacity: 0.64;
+  }
+  span {
+    cursor: pointer;
+  }
+}

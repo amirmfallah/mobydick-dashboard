@@ -1,0 +1,108 @@
+<div class="main-container">
+  <div
+    class="d-flex flex-row justify-content-between align-items-center header"
+  >
+    <h2>
+      <span class="last-path"
+        >خانه / <span routerLink="/orders">سفارشات</span> /
+      </span>
+      {{ ($order | async).orderId }}
+    </h2>
+  </div>
+  <div class="box">
+    <div class="row">
+      <div class="col-4">
+        <div class="pl-3">
+          <mbd-neshan-map
+            [lng]="($order | async).addressId.lat"
+            [lat]="($order | async).addressId.lng"
+            locked="true"
+          >
+          </mbd-neshan-map>
+        </div>
+      </div>
+      <div class="col-4">
+        <h2>
+          <span class="font-weight-bold">شماره سفارش: </span>
+          {{ ($order | async).orderId }}
+        </h2>
+        <mat-form-field appearance="outline" class="mt-2">
+          <mat-label>وضعیت سفارش</mat-label>
+          <mat-select
+            (valueChange)="changeStatus($order.value._id, $event)"
+            [value]="cartStatus[($order | async).status]"
+          >
+            <mat-option [value]="cartStatus.OPEN">باز</mat-option>
+            <mat-option [value]="cartStatus.REGISTERED">ثبت شده</mat-option>
+            <mat-option [value]="cartStatus.PREPARING"
+              >در حال آماده‌سازی</mat-option
+            >
+            <mat-option [value]="cartStatus.SENT">ارسال شده</mat-option>
+            <mat-option [value]="cartStatus.DELIVERED"
+              >تحویل داده شده</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <p>
+          <span class="font-weight-bold">مجموع پرداخت شده: </span>
+          {{ ($order | async).total - ($order | async).totalDiscount }}
+        </p>
+        <p>
+          <span class="font-weight-bold">مجموع تخفیفات: </span>
+          {{ ($order | async).total - ($order | async).totalDiscount }}
+        </p>
+        <p *ngIf="($order | async).giftId">
+          <span class="font-weight-bold">کد تخفیف: </span>
+          {{ ($order | async).giftId.code }}
+        </p>
+      </div>
+      <div class="col-4">
+        <p>
+          <span class="font-weight-bold">نام گیرنده: </span>
+          {{ ($order | async).ownerId.name || "بی نام" }}
+        </p>
+        <p>
+          <span class="font-weight-bold">شماره تماس گیرنده: </span>
+          {{ ($order | async).ownerId.phone }}
+        </p>
+        <p>
+          <span class="font-weight-bold">آدرس: </span>
+          {{ ($order | async).addressId.address }}
+        </p>
+      </div>
+    </div>
+    <div
+      class="cart-item d-flex flex-column"
+      *ngFor="let item of ($cart | async).items"
+    >
+      <div class="d-flex flex-row align-items-center">
+        <img [src]="item.productId.thumbnail" alt="" height="56" width="56" />
+        <p class="font-weight-bold mr-3">{{ item.productId.name }}</p>
+        <p class="mr-3">{{ getOptionName(item) }}</p>
+        <p class="mr-3">
+          تعداد: <span style="font-size: 18px">{{ item.count }}</span>
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p class="font-weight-bold">محتویات:</p>
+          <ul>
+            <li *ngFor="let ing of item.ingredients">{{ ing.name }}</li>
+          </ul>
+        </div>
+        <div class="col-4">
+          <p class="font-weight-bold">نان:</p>
+          <ul>
+            <li *ngFor="let ing of item.bread">{{ ing.name }}</li>
+          </ul>
+        </div>
+        <div class="col-4">
+          <p class="font-weight-bold">افزودنی ها:</p>
+          <ul>
+            <li *ngFor="let ing of item.optional">{{ ing.name }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

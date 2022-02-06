@@ -9,7 +9,7 @@ export const environment = {
     'https://mobydick-image-processor-mobydick.apps.ir-thr-at1.arvan.run',
   NeshanWebMapApiToken: 'web.SJFu4qzp7zEIHMCpo2sRt1gTehcofEOxDle0t1C9',
 };
-
+// https://beta-api.mobydickfoods.com
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

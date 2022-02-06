@@ -1,6 +1,7 @@
 <div class="map">
   <div id="newMap" class="map-container"></div>
   <button
+    *ngIf="!this.locked"
     mat-mini-fab
     class="loc"
     color="primary"

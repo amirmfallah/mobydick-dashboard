@@ -26,13 +26,13 @@ export class DesktopMenuComponent implements OnInit {
 
   onNavItemClicked(item: string, isPublic?: boolean): void {
     this.navItemClicked.emit(item);
-    this.itemClicked = item;
     if (
       (this.branchesService.getBranch().value &&
         this.branchesService.getBranch().value.verified) ||
       this.authService.hasAccess(Role.Super) ||
       isPublic
     ) {
+      this.itemClicked = item;
       this.router.navigate(['/', item]);
       return;
     }

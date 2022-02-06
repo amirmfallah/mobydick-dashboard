@@ -12,6 +12,8 @@ import * as _ from 'lodash';
 export class NeshanMapComponent implements OnInit {
   @Input() lat: number;
   @Input() lng: number;
+  @Input() locked: boolean;
+
   @Input() $geoLocation: BehaviorSubject<any>;
 
   constructor() {
@@ -26,14 +28,18 @@ export class NeshanMapComponent implements OnInit {
       traffic: false,
       center: [this.lng || 35.699739, this.lat || 51.338097],
       zoom: 14,
-      zoomControl: false,
+      dragging: !this.locked,
+      scrollWheelZoom: !this.locked,
+      doubleClickZoom: false,
     });
     var marker = L.marker([this.lng || 35.699739, this.lat || 51.338097]).addTo(
       newMap
     );
 
     newMap.on('move', function () {
-      marker.setLatLng(newMap.getCenter());
+      if (!this.locked) {
+        marker.setLatLng(newMap.getCenter());
+      }
     });
 
     this.$geoLocation.subscribe(() => {

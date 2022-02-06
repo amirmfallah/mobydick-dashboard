@@ -44,10 +44,6 @@ table {
   h2 {
     font-size: 20px;
   }
-
-  .last-path {
-    opacity: 0.64;
-  }
 }
 
 .edit {
@@ -88,4 +84,9 @@ table {
 
 .last-path {
   opacity: 0.64;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  margin: 0 !important;
+  padding: 0;
 }

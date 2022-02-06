@@ -1,3 +1,4 @@
+import { OrdersModule } from './orders/orders.module';
 import { BranchesModule } from './branches/branches.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
 import { StaffModule } from './staff/staff.module';
@@ -38,6 +39,7 @@ import { CustomPaginator } from 'src/core/CustomPaginatorConfiguration';
     DashboardModule,
     IngredientsModule,
     BranchesModule,
+    OrdersModule,
   ],
   providers: [
     IngredientsService,

@@ -1,3 +1,4 @@
+import { searchResponse } from './../../../../core/interfaces/shared.interfaces';
 import { Router } from '@angular/router';
 import { CategoriesService } from './../../../categories/services/categories.service';
 import { Category } from './../../interfaces/products.interface';
@@ -30,7 +31,7 @@ export class NewProductDesktopComponent implements OnInit {
   @ViewChild('options', { read: ViewContainerRef }) container: ViewContainerRef;
   child_unique_key: number = 0;
   componentsReferences = Array<ComponentRef<OptionItemComponent>>();
-  categories$ = new BehaviorSubject<Category>(undefined);
+  categories$ = new BehaviorSubject<Category[]>(undefined);
   constructor(
     private fb: FormBuilder,
     private imageService: ImageUploadService,
@@ -53,10 +54,11 @@ export class NewProductDesktopComponent implements OnInit {
     price: this.fb.array([], Validators.required),
   });
   ngOnInit(): void {
-    this.categoriesService.getAllCategories().subscribe((x) => {
-      console.log(x);
-      this.categories$.next(x);
-    });
+    this.categoriesService
+      .getAllCategories()
+      .subscribe((x: searchResponse<Category>) => {
+        this.categories$.next(x.items);
+      });
     of('')
       .pipe(delay(100))
       .subscribe(() => {

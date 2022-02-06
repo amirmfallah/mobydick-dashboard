@@ -43,6 +43,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./branches/branches.module').then((m) => m.BranchesModule),
   },
+  {
+    path: 'orders',
+    canActivate: [SignedInGuard],
+    loadChildren: () =>
+      import('./orders/orders.module').then((m) => m.OrdersModule),
+  },
 ];
 
 @NgModule({
