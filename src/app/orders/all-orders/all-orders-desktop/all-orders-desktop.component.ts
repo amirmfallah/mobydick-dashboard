@@ -1,14 +1,26 @@
+import { BranchesService } from './../../../../core/services/branches.service';
+import { FormBuilder } from '@angular/forms';
 import { AuthService } from './../../../../core/services/auth.service';
 import { Role } from './../../../../core/core.interface';
 import { searchResponse } from './../../../../core/interfaces/shared.interfaces';
 import { BranchesModule } from './../../../branches/branches.module';
-import { OrderDto, CartStatus } from './../../interfaces/orders.interface';
+import {
+  OrderDto,
+  CartStatus,
+  branchSearch,
+} from './../../interfaces/orders.interface';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { BehaviorSubject, interval, Subject } from 'rxjs';
 import { OrdersService } from '../../services/orders.service';
-import { debounce, map } from 'rxjs/operators';
-
+import { debounce, map, filter } from 'rxjs/operators';
+import * as _ from 'lodash';
+import { branch } from 'src/app/products/interfaces/branches.interface';
+export interface Filter {
+  phone?: string;
+  status?: CartStatus;
+  orderId?: string;
+}
 @Component({
   selector: 'mbd-all-orders-desktop',
   templateUrl: './all-orders-desktop.component.html',
@@ -24,9 +36,21 @@ export class AllOrdersDesktopComponent implements OnInit {
   $search = new Subject();
   searchExp: string = '';
   cartStatus = CartStatus;
+
+  $branches = new BehaviorSubject<searchResponse<branchSearch>>(undefined);
+
+  filterForm = this.fb.group({
+    status: [''],
+    orderId: [''],
+    phone: [''],
+    branchId: [''],
+  });
+
   constructor(
     private ordersService: OrdersService,
-    private authService: AuthService
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private branchesService: BranchesService
   ) {
     this.$search
       .pipe(
@@ -58,6 +82,12 @@ export class AllOrdersDesktopComponent implements OnInit {
         this.limit.next(res.limit);
         this.count.next(res.count);
         this.currentPage.next(res.currentPage);
+      });
+
+    this.branchesService
+      .getAllBranches()
+      .subscribe((res: searchResponse<branchSearch>) => {
+        this.$branches.next(res);
       });
   }
 
@@ -103,5 +133,20 @@ export class AllOrdersDesktopComponent implements OnInit {
   search(e) {
     console.log(this.searchExp);
     this.$search.next(this.searchExp);
+  }
+
+  filter() {
+    let filter = <Filter>this.filterForm.value;
+    const keys = Object.keys(filter);
+    for (let i = 0; i < keys.length; i++) {
+      if (filter[keys[i]] == '') {
+        delete filter[keys[i]];
+      }
+    }
+    if (!_.isEmpty(filter)) {
+      const exp = JSON.stringify(filter);
+      console.log(exp);
+      this.$search.next(exp);
+    }
   }
 }

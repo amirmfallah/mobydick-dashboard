@@ -45,6 +45,7 @@ export interface Address {
 }
 
 export enum CartStatus {
+  CANCELED = 'CANCELED',
   OPEN = 'OPEN',
   REGISTERED = 'REGISTERED',
   PREPARING = 'PREPARING',
@@ -53,6 +54,7 @@ export enum CartStatus {
 }
 
 export enum CartStatusPersian {
+  CANCELED = 'لغو شده',
   OPEN = 'باز',
   REGISTERED = 'ثبت شده',
   PREPARING = 'در حال آماده‌سازی',
