@@ -1,3 +1,5 @@
+import { ConfirmDialogComponent } from './../../../dialogs/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 import { debounce, map, switchMap } from 'rxjs/operators';
 import {
   ProductUnpopulated,
@@ -22,7 +24,10 @@ export class AllProductsDesktopComponent implements OnInit {
   pageEvent: PageEvent;
   $search = new Subject();
   searchExp: string = '';
-  constructor(private productsService: ProductsService) {
+  constructor(
+    private productsService: ProductsService,
+    private dialog: MatDialog
+  ) {
     this.$search
       .pipe(
         debounce(() => interval(1000)),
@@ -55,15 +60,24 @@ export class AllProductsDesktopComponent implements OnInit {
   }
 
   delete(id: string): void {
-    this.productsService
-      .deleteProductById(id)
-      .pipe(
-        switchMap(() => {
-          return this.productsService.getAllProducts(this.currentPage.value);
-        })
-      )
-      .subscribe((res: productsResponse) => {
-        this.products.next(res.items);
+    this.dialog
+      .open(ConfirmDialogComponent)
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          this.productsService
+            .deleteProductById(id)
+            .pipe(
+              switchMap(() => {
+                return this.productsService.getAllProducts(
+                  this.currentPage.value
+                );
+              })
+            )
+            .subscribe((res: productsResponse) => {
+              this.products.next(res.items);
+            });
+        }
       });
   }
 

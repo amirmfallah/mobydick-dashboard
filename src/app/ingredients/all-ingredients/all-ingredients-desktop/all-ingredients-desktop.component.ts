@@ -1,3 +1,4 @@
+import { ConfirmDialogComponent } from './../../../dialogs/confirm-dialog/confirm-dialog.component';
 import { CreateIngredient } from './../../../../core/interfaces/shared.interfaces';
 import { CreateIngredientDialogComponent } from './../../../dialogs/create-ingredient-dialog/create-ingredient-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -60,17 +61,24 @@ export class AllIngredientsDesktopComponent implements OnInit {
   }
 
   delete(id: string): void {
-    this.ingredientsService
-      .deleteIngredientsById(id)
-      .pipe(
-        switchMap(() => {
-          return this.ingredientsService.getAllIngredients(
-            this.currentPage.value
-          );
-        })
-      )
-      .subscribe((res: searchResponse<Ingredients>) => {
-        this.ingredients.next(res.items);
+    this.dialog
+      .open(ConfirmDialogComponent)
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          this.ingredientsService
+            .deleteIngredientsById(id)
+            .pipe(
+              switchMap(() => {
+                return this.ingredientsService.getAllIngredients(
+                  this.currentPage.value
+                );
+              })
+            )
+            .subscribe((res: searchResponse<Ingredients>) => {
+              this.ingredients.next(res.items);
+            });
+        }
       });
   }
 

@@ -1,3 +1,4 @@
+import { ConfirmDialogComponent } from './../../../dialogs/confirm-dialog/confirm-dialog.component';
 import { searchResponse } from './../../../../core/interfaces/shared.interfaces';
 import { PageEvent } from '@angular/material/paginator';
 import { debounce, map, switchMap } from 'rxjs/operators';
@@ -98,15 +99,24 @@ export class CategoriesDesktopComponent implements OnInit {
   }
 
   delete(id: string): void {
-    this.categoryService
-      .deleteCategoryById(id)
-      .pipe(
-        switchMap(() => {
-          return this.categoryService.getAllCategories(this.currentPage.value);
-        })
-      )
-      .subscribe((res: searchResponse<CategoryItem>) => {
-        this.categories.next(res.items);
+    this.dialog
+      .open(ConfirmDialogComponent)
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          this.categoryService
+            .deleteCategoryById(id)
+            .pipe(
+              switchMap(() => {
+                return this.categoryService.getAllCategories(
+                  this.currentPage.value
+                );
+              })
+            )
+            .subscribe((res: searchResponse<CategoryItem>) => {
+              this.categories.next(res.items);
+            });
+        }
       });
   }
 

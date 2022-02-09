@@ -8,6 +8,7 @@ import { CreateNewCategoryComponent } from './create-new-category/create-new-cat
 import { EditBranchDialogComponent } from './edit-branch-dialog/edit-branch-dialog.component';
 import { ComponentsModule } from '../components/components.module';
 import { CreateIngredientDialogComponent } from './create-ingredient-dialog/create-ingredient-dialog.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CreateIngredientDialogComponent } from './create-ingredient-dialog/crea
     CreateNewCategoryComponent,
     EditBranchDialogComponent,
     CreateIngredientDialogComponent,
+    ConfirmDialogComponent,
   ],
   imports: [CommonModule, UiKitModule, MatDialogModule, ComponentsModule],
   exports: [

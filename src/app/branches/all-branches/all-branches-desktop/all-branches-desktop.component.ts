@@ -1,3 +1,4 @@
+import { ConfirmDialogComponent } from './../../../dialogs/confirm-dialog/confirm-dialog.component';
 import { branch } from 'src/app/products/interfaces/branches.interface';
 import { BranchesService } from 'src/core/services/branches.service';
 import { Component, OnInit } from '@angular/core';
@@ -62,15 +63,24 @@ export class AllBranchesDesktopComponent implements OnInit {
   }
 
   delete(id: string): void {
-    this.branchesService
-      .deleteBranchById(id)
-      .pipe(
-        switchMap(() => {
-          return this.branchesService.getAllBranches(this.currentPage.value);
-        })
-      )
-      .subscribe((res: searchResponse<branch>) => {
-        this.branches.next(res.items);
+    this.dialog
+      .open(ConfirmDialogComponent)
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          this.branchesService
+            .deleteBranchById(id)
+            .pipe(
+              switchMap(() => {
+                return this.branchesService.getAllBranches(
+                  this.currentPage.value
+                );
+              })
+            )
+            .subscribe((res: searchResponse<branch>) => {
+              this.branches.next(res.items);
+            });
+        }
       });
   }
 

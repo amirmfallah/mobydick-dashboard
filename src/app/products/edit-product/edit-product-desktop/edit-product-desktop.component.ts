@@ -106,7 +106,6 @@ export class EditProductDesktopComponent implements OnInit {
         this.preview = this.sanitizer.bypassSecurityTrustUrl(
           URL.createObjectURL(file)
         );
-        console.log(this.preview);
       }
     });
   }
@@ -180,14 +179,11 @@ export class EditProductDesktopComponent implements OnInit {
   }
 
   onCategoryChange(e) {
-    console.log(e);
     this.form.controls['category'].setValue(e);
   }
 
   submit() {
-    console.log(this.form.value);
     this.form.controls['available'].setValue(true);
-    console.log(this.form.errors);
     if (!this.form.valid) {
       this._snackBar.open('فیلد‌های الزامی را تکمیل کنید.', 'باشه', {
         duration: 2000,
@@ -217,7 +213,6 @@ export class EditProductDesktopComponent implements OnInit {
       )
       .subscribe(
         (res) => {
-          console.log(res);
           this._snackBar.open('محصول با موفقیت ساخته شد.', 'باشه', {
             duration: 2000,
             panelClass: ['snakbar'],
@@ -226,7 +221,6 @@ export class EditProductDesktopComponent implements OnInit {
           this.router.navigate(['/', 'products']);
         },
         (err) => {
-          console.log(err);
           this.form.enable();
           this._snackBar.open('در هنگام ساخت محصول مشکلی پیش آمد.', 'باشه', {
             duration: 2000,
