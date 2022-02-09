@@ -28,4 +28,14 @@ export class ProductsService {
   createProduct(product: any) {
     return this.http.post(`${Configuration.ApiUrl}/api/v1/products`, product);
   }
+  patchProduct(id: string, product: any) {
+    return this.http.patch(
+      `${Configuration.ApiUrl}/api/v1/products/${id}`,
+      product
+    );
+  }
+
+  getProduct(id: string) {
+    return this.http.get(`${Configuration.ApiUrl}/api/v1/products/${id}`);
+  }
 }

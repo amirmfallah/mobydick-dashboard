@@ -1,0 +1,117 @@
+<form
+  class="main-container w-100 h-100 overflow-auto"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+>
+  <div class="d-flex access-level-container py-3 mb-3">
+    <div class="col-3">
+      <div class="preview-container">
+        <div
+          fileUpload
+          (click)="fileInput.click()"
+          (FileDropped)="fileDropped($event)"
+          class="uploadfilecontainer d-flex"
+          [ngClass]="{ 'drag-drop-zone': files.length === 0 }"
+        >
+          <div
+            *ngIf="files.length === 0 && !this.preview"
+            class="drag-drop-text"
+          >
+            <div>
+              <mat-icon fontSet="material-icons-round" class="drag-drop-icon"
+                >cloud_upload</mat-icon
+              >
+            </div>
+            <span class="mat-body-1">عکس موردنظر را به اینجا بکشید. *</span>
+          </div>
+          <div *ngIf="files.length !== 0 || this.preview" class="w-100">
+            <img [src]="preview" alt="" class="w-100 h-100" />
+          </div>
+
+          <input
+            hidden
+            type="file"
+            accept="image/png, image/jpeg"
+            #fileInput
+            (change)="fileDropped($event.target.files)"
+          />
+        </div>
+        <button
+          *ngIf="files.length !== 0 || this.preview"
+          mat-icon-button
+          (click)="removeFile(0, $event)"
+          color="warn"
+          class="remove-btn"
+        >
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="input w-100 input-margin" appearance="outline">
+        <mat-label>نام محصول</mat-label>
+        <input matInput type="text" formControlName="name" required="true" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>دسته‌بندی</mat-label>
+        <mat-select
+          (valueChange)="onCategoryChange($event)"
+          required="true"
+          formControlName="category"
+        >
+          <mat-option
+            *ngFor="let category of categories$ | async"
+            [value]="category._id"
+          >
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-5">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>توضیحات محصول</mat-label>
+        <textarea
+          matInput
+          placeholder="Ex. It makes me feel..."
+          formControlName="description"
+          required="true"
+        ></textarea>
+      </mat-form-field>
+      <p class="mt-1">فیلد‌های ستاره‌دار الزامی هستند.</p>
+    </div>
+  </div>
+  <div>
+    <div #options class="position-relative"></div>
+  </div>
+  <div class="d-flex flex-row w-100 justify-content-center">
+    <div class="action-buttons d-flex flex-column">
+      <div class="d-flex flex-row m-2">
+        <button
+          type="button"
+          mat-flat-button
+          class="ml-3"
+          color="accent"
+          (click)="addOption()"
+          [disabled]="this.form.disabled"
+        >
+          افزودن گزینه
+        </button>
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="this.form.disabled"
+        >
+          دخیره محصول
+        </button>
+      </div>
+      <mat-progress-bar
+        mode="query"
+        [class.invisible]="!form.disabled"
+        [class.visible]="form.disabled"
+      >
+      </mat-progress-bar>
+    </div>
+  </div>
+</form>

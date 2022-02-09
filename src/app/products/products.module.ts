@@ -7,6 +7,8 @@ import { ProductsService } from './services/products.service';
 import { AllProductsDesktopComponent } from './all-products/all-products-desktop/all-products-desktop.component';
 import { NewProductComponent } from './new-product/new-product.component';
 import { NewProductDesktopComponent } from './new-product/new-product-desktop/new-product-desktop.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { EditProductDesktopComponent } from './edit-product/edit-product-desktop/edit-product-desktop.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { NewProductDesktopComponent } from './new-product/new-product-desktop/ne
     AllProductsDesktopComponent,
     NewProductComponent,
     NewProductDesktopComponent,
+    EditProductComponent,
+    EditProductDesktopComponent,
   ],
   imports: [CommonModule, ProductsRoutingModule, UiKitModule],
   providers: [ProductsService],

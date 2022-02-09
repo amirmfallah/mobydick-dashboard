@@ -22,6 +22,7 @@ export interface priceItem {
   _id: string;
   optionName: string;
   price: number;
+  index: number;
 }
 
 export interface Product {

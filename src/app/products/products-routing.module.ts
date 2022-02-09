@@ -1,3 +1,4 @@
+import { EditProductComponent } from './edit-product/edit-product.component';
 import { SignedInGuard } from './../auth/guards/signed-in.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,6 +15,11 @@ const routes: Routes = [
   {
     path: 'new',
     component: NewProductComponent,
+    canActivate: [SignedInGuard],
+  },
+  {
+    path: ':id',
+    component: EditProductComponent,
     canActivate: [SignedInGuard],
   },
 ];

@@ -6,11 +6,17 @@
         matInput
         type="text"
         (change)="onInputChange($event, 'optionName')"
+        [(ngModel)]="this.optionName"
       />
     </mat-form-field>
     <mat-form-field class="input w-100 input-margin" appearance="outline">
       <mat-label>قیمت پایه (تومان)</mat-label>
-      <input matInput type="number" (change)="onInputChange($event, 'price')" />
+      <input
+        matInput
+        type="number"
+        (change)="onInputChange($event, 'price')"
+        [(ngModel)]="this.price"
+      />
     </mat-form-field>
     <button mat-flat-button color="warn" (click)="remove_me()">حذف</button>
   </div>
@@ -31,6 +37,7 @@
                 class="checkbox"
                 color="primary"
                 [value]="item._id"
+                [checked]="isChecked(item, 'bread')"
                 (change)="onCheckboxChange($event, 'bread')"
               >
                 {{ item.name }}
@@ -52,6 +59,7 @@
                 color="primary"
                 [value]="item._id"
                 (change)="onCheckboxChange($event, 'ingredients')"
+                [checked]="isChecked(item, 'ingredients')"
               >
                 {{ item.name }}
               </mat-checkbox>
@@ -72,6 +80,7 @@
                 color="primary"
                 [value]="item._id"
                 (change)="onCheckboxChange($event, 'optional')"
+                [checked]="isChecked(item, 'optional')"
               >
                 {{ item.name }}
               </mat-checkbox>

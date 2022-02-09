@@ -1,3 +1,5 @@
+import { element } from 'protractor';
+import { EditProductDesktopComponent } from './../../products/edit-product/edit-product-desktop/edit-product-desktop.component';
 import { searchResponse } from './../../../core/interfaces/shared.interfaces';
 import { filter } from 'rxjs/operators';
 import {
@@ -15,8 +17,16 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-interface optionItem {
+import * as _ from 'lodash';
+export interface optionItem {
   item: string;
+  included: boolean;
+  required: boolean;
+  forOption: number;
+}
+
+export interface optionItemPopulated {
+  item: Ingredients;
   included: boolean;
   required: boolean;
   forOption: number;
@@ -34,7 +44,7 @@ interface priceOption {
 })
 export class OptionItemComponent implements OnInit {
   public unique_key: number;
-  public parentRef: NewProductDesktopComponent;
+  public parentRef: NewProductDesktopComponent | EditProductDesktopComponent;
   ingredients$ = new BehaviorSubject<Ingredients[]>(undefined);
   constructor(
     private ingredientsService: IngredientsService,
@@ -44,6 +54,10 @@ export class OptionItemComponent implements OnInit {
 
   optionName: string = '';
   price: number = 0;
+  item?: BehaviorSubject<priceItem>;
+  optional?: BehaviorSubject<optionItemPopulated[]>;
+  bread?: BehaviorSubject<optionItemPopulated[]>;
+  ingredients?: BehaviorSubject<optionItemPopulated[]>;
 
   ngOnInit(): void {
     const checkArray: FormArray = this.form.get('price') as FormArray;
@@ -59,7 +73,51 @@ export class OptionItemComponent implements OnInit {
       .getAllIngredients()
       .subscribe((items: searchResponse<Ingredients>) => {
         this.ingredients$.next(items.items);
+
+        this.bread.subscribe((res: optionItemPopulated[]) => {
+          res.forEach((element) => {
+            this.onCheckboxChange(
+              { checked: true, source: { value: element.item._id } },
+              'bread'
+            );
+          });
+        });
+        this.optional.subscribe((res: optionItemPopulated[]) => {
+          res.forEach((element) => {
+            this.onCheckboxChange(
+              { checked: true, source: { value: element.item._id } },
+              'optional'
+            );
+          });
+        });
+        this.ingredients.subscribe((res: optionItemPopulated[]) => {
+          console.log('here');
+          console.log(res);
+          res.forEach((element) => {
+            this.onCheckboxChange(
+              { checked: true, source: { value: element.item._id } },
+              'ingredients'
+            );
+          });
+        });
       });
+
+    this.item.subscribe((item: priceItem) => {
+      console.log(item);
+      this.optionName = item.optionName;
+      this.price = item.price;
+      this.unique_key = item.index;
+      const checkArray: FormArray = this.form.get('price') as FormArray;
+      checkArray.controls.map((x) => {
+        if ((<priceOption>x.value).index === this.unique_key) {
+          x.value['price'] = item.price;
+          x.value['optionName'] = item.optionName;
+          x.value['index'] = item.index;
+          x.setValue(x.value);
+          console.log(x.value);
+        }
+      });
+    });
   }
 
   remove_me() {
@@ -149,5 +207,23 @@ export class OptionItemComponent implements OnInit {
       );
     }
     console.log(this.form.value);
+  }
+
+  isChecked(item: Ingredients, field: string) {
+    if (field === 'bread') {
+      return (
+        this.bread.value.filter((x) => x.item._id === item._id)[0] !== undefined
+      );
+    } else if (field === 'optional') {
+      return (
+        this.optional.value.filter((x) => x.item._id === item._id)[0] !==
+        undefined
+      );
+    } else if (field === 'ingredients') {
+      return (
+        this.ingredients.value.filter((x) => x.item._id === item._id)[0] !==
+        undefined
+      );
+    }
   }
 }

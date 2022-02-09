@@ -40,7 +40,13 @@
         <p class="mr-3">{{ product.name }}</p>
       </div>
       <div>
-        <button mat-flat-button class="ml-2 edit">ویرایش</button>
+        <button
+          mat-flat-button
+          class="ml-2 edit"
+          [routerLink]="['/', 'products', product._id]"
+        >
+          ویرایش
+        </button>
         <button mat-flat-button color="warn" (click)="delete(product._id)">
           حذف
         </button>
