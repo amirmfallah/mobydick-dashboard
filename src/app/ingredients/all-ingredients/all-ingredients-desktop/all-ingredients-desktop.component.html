@@ -4,7 +4,9 @@
   >
     <h2><span class="last-path">خانه / </span>محتویات</h2>
 
-    <button mat-flat-button color="primary">افزدن محتویات</button>
+    <button mat-flat-button color="primary" (click)="createIngredient()">
+      افزدن محتویات
+    </button>
   </div>
 
   <div class="d-flex flex-column w-100 table">
@@ -30,7 +32,7 @@
       *ngFor="let ing of ingredients | async"
     >
       <div class="d-flex flex-row align-items-center">
-        <img [src]="ing.thumbnail" alt="" class="thumbnail" />
+        <!-- <img [src]="ing.thumbnail" alt="" class="thumbnail" /> -->
         <p class="mr-3">{{ ing.name }}</p>
       </div>
       <div>

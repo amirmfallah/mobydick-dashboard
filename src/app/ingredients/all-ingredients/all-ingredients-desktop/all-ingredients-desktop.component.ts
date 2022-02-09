@@ -1,3 +1,5 @@
+import { CreateIngredientDialogComponent } from './../../../dialogs/create-ingredient-dialog/create-ingredient-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 import { debounce, map, switchMap } from 'rxjs/operators';
 import { IngredientsService } from './../../../../core/services/ingredients.service';
 import { Component, OnInit } from '@angular/core';
@@ -20,7 +22,10 @@ export class AllIngredientsDesktopComponent implements OnInit {
   pageEvent: PageEvent;
   $search = new Subject();
   searchExp: string = '';
-  constructor(private ingredientsService: IngredientsService) {
+  constructor(
+    private ingredientsService: IngredientsService,
+    private dialog: MatDialog
+  ) {
     this.$search
       .pipe(
         debounce(() => interval(1000)),
@@ -84,5 +89,23 @@ export class AllIngredientsDesktopComponent implements OnInit {
   search(e) {
     console.log(this.searchExp);
     this.$search.next(this.searchExp);
+  }
+
+  createIngredient() {
+    this.dialog
+      .open(CreateIngredientDialogComponent)
+      .afterClosed()
+      .subscribe(() => {
+        this.ingredientsService
+          .getAllIngredients(0)
+          .subscribe((res: searchResponse<Ingredients>) => {
+            console.log(res);
+            this.ingredients.next(res.items);
+            this.pages.next(res.pages);
+            this.limit.next(res.limit);
+            this.count.next(res.count);
+            this.currentPage.next(res.currentPage);
+          });
+      });
   }
 }

@@ -7,12 +7,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CreateNewCategoryComponent } from './create-new-category/create-new-category.component';
 import { EditBranchDialogComponent } from './edit-branch-dialog/edit-branch-dialog.component';
 import { ComponentsModule } from '../components/components.module';
+import { CreateIngredientDialogComponent } from './create-ingredient-dialog/create-ingredient-dialog.component';
 
 @NgModule({
   declarations: [
     CreateNewStaffComponent,
     CreateNewCategoryComponent,
     EditBranchDialogComponent,
+    CreateIngredientDialogComponent,
   ],
   imports: [CommonModule, UiKitModule, MatDialogModule, ComponentsModule],
   exports: [

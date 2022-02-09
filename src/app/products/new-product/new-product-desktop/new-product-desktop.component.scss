@@ -201,12 +201,3 @@ $primary: var(--mbd-primary);
   border-radius: 16px;
   overflow: hidden;
 }
-
-::ng-deep .mat-form-field-wrapper {
-  margin: 0 !important;
-  padding: 0;
-}
-
-.input-margin {
-  margin-bottom: 16px !important;
-}

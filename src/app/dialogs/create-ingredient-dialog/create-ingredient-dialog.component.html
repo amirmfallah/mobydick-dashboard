@@ -1,0 +1,34 @@
+<h2 mat-dialog-title class="d-flex justify-content-start">محتویات جدید</h2>
+
+<form
+  mat-dialog-content
+  class="d-flex flex-column inputs mt-3"
+  [formGroup]="form"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>نام</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>قیمت</mat-label>
+    <input matInput formControlName="price" />
+  </mat-form-field>
+</form>
+
+<div mat-dialog-actions class="d-flex btns">
+  <div class="button-container">
+    <div class="spinner-container" *ngIf="form.disabled">
+      <mat-spinner diameter="24"></mat-spinner>
+    </div>
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="form.disabled"
+      (click)="create()"
+    >
+      اضافه کردن
+    </button>
+  </div>
+
+  <button mat-flat-button class="mbd-button">لغو</button>
+</div>

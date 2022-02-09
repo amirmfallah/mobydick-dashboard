@@ -1,3 +1,4 @@
+import { CreateIngredient } from './../interfaces/shared.interfaces';
 import { Configuration } from './../configuration';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -28,7 +29,7 @@ export class IngredientsService {
     );
   }
 
-  createIngredients(ingredients: any) {
+  createIngredients(ingredients: CreateIngredient) {
     return this.http.post(
       `${Configuration.ApiUrl}/api/v1/ingredients`,
       ingredients

@@ -21,6 +21,7 @@
       (click)="onNavItemClicked('branches')"
       routerLinkActive="focused"
       [class.focused]="itemClicked == 'branches'"
+      *ngIf="hasSuperAccess()"
     >
       <mat-icon>place</mat-icon>
       <p>شعبه ها</p>

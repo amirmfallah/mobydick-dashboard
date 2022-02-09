@@ -85,11 +85,10 @@ table {
   }
 }
 
-.last-path {
-  opacity: 0.64;
+.filter-input {
+  width: 100px;
 }
 
-::ng-deep .mat-form-field-wrapper {
-  margin: 0 !important;
-  padding: 0;
+.last-path {
+  opacity: 0.64;
 }

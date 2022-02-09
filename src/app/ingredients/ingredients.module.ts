@@ -1,3 +1,4 @@
+import { DialogsModule } from './../dialogs/dialogs.module';
 import { IngredientsRoutingModule } from './ingredients-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,6 +8,6 @@ import { UiKitModule } from '../ui-kit/ui-kit.module';
 
 @NgModule({
   declarations: [AllIngredientsComponent, AllIngredientsDesktopComponent],
-  imports: [CommonModule, UiKitModule, IngredientsRoutingModule],
+  imports: [CommonModule, UiKitModule, IngredientsRoutingModule, DialogsModule],
 })
 export class IngredientsModule {}

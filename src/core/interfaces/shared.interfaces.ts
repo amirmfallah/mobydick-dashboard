@@ -5,3 +5,8 @@ export interface searchResponse<type> {
   count: number;
   currentPage: number;
 }
+
+export interface CreateIngredient {
+  name: string;
+  price: number;
+}
