@@ -9,6 +9,8 @@
         <mbd-neshan-map
           [lat]="this.form.value.lng"
           [lng]="this.form.value.lat"
+          [locked]="true"
+          [$geoLocation]="undefined"
         ></mbd-neshan-map>
       </div>
       <div class="col-6">
@@ -58,8 +60,6 @@
     >
       تایید شعبه
     </button>
-    <button mat-flat-button class="mbd-button" (click)="this.dialogRef.close()">
-      باشه
-    </button>
+    <button mat-flat-button class="mbd-button" mat-dialog-close>باشه</button>
   </div>
 </form>

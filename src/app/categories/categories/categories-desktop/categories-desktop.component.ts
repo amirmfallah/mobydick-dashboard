@@ -58,7 +58,43 @@ export class CategoriesDesktopComponent implements OnInit {
       });
   }
   openNewCategoryDialog() {
-    const dialogRef = this.dialog.open(CreateNewCategoryComponent);
+    const dialogRef = this.dialog
+      .open(CreateNewCategoryComponent, {
+        data: undefined,
+      })
+      .afterClosed()
+      .subscribe(() => {
+        this.categoryService
+          .getAllCategories(0)
+          .subscribe((res: searchResponse<CategoryItem>) => {
+            console.log(res);
+            this.categories.next(res.items);
+            this.pages.next(res.pages);
+            this.limit.next(res.limit);
+            this.count.next(res.count);
+            this.currentPage.next(res.currentPage);
+          });
+      });
+  }
+
+  editCategory(category: CategoryItem) {
+    const dialogRef = this.dialog
+      .open(CreateNewCategoryComponent, {
+        data: category,
+      })
+      .afterClosed()
+      .subscribe(() => {
+        this.categoryService
+          .getAllCategories(0)
+          .subscribe((res: searchResponse<CategoryItem>) => {
+            console.log(res);
+            this.categories.next(res.items);
+            this.pages.next(res.pages);
+            this.limit.next(res.limit);
+            this.count.next(res.count);
+            this.currentPage.next(res.currentPage);
+          });
+      });
   }
 
   delete(id: string): void {

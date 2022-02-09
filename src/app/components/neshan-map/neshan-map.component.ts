@@ -17,7 +17,9 @@ export class NeshanMapComponent implements OnInit {
   @Input() $geoLocation: BehaviorSubject<any>;
 
   constructor() {
-    this.$geoLocation = new BehaviorSubject<any>({});
+    if (!this.locked) {
+      this.$geoLocation = new BehaviorSubject<any>({});
+    }
   }
 
   ngOnInit(): void {

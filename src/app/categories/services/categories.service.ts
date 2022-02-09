@@ -30,6 +30,13 @@ export class CategoriesService {
     );
   }
 
+  patchCategory(id: string, category: CategoryItem) {
+    return this.http.patch(
+      `${Configuration.ApiUrl}/api/v1/categories/${id}`,
+      category
+    );
+  }
+
   deleteCategoryById(id: string) {
     return this.http.delete<any>(
       `${Configuration.ApiUrl}/api/v1/categories/${id}`

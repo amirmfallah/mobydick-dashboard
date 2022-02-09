@@ -1,26 +1,54 @@
-<h2 mat-dialog-title class="d-flex justify-content-start">دسته‌بندی جدید</h2>
+<h2 mat-dialog-title class="d-flex justify-content-start" *ngIf="this.patch">
+  ویرایش دسته‌بندی
+</h2>
+<h2 mat-dialog-title class="d-flex justify-content-start" *ngIf="!this.patch">
+  افزودن دسته‌بندی
+</h2>
 
-<form mat-dialog-content class="d-flex flex-column inputs mt-3" [formGroup]="form">
+<form
+  mat-dialog-content
+  class="d-flex flex-column inputs mt-3"
+  [formGroup]="form"
+>
   <mat-form-field appearance="fill">
     <mat-label>نام</mat-label>
     <input matInput formControlName="name" />
   </mat-form-field>
   <div class="preview-container">
-    <div fileUpload (click)="fileInput.click()" (FileDropped)="fileDropped($event)" class="uploadfilecontainer d-flex"
-      [ngClass]="{ 'drag-drop-zone': files.length === 0 }">
-      <div *ngIf="files.length === 0" class="drag-drop-text">
+    <div
+      fileUpload
+      (click)="fileInput.click()"
+      (FileDropped)="fileDropped($event)"
+      class="uploadfilecontainer d-flex"
+      [ngClass]="{ 'drag-drop-zone': files.length === 0 }"
+    >
+      <div *ngIf="files.length === 0 && !this.preview" class="drag-drop-text">
         <div>
-          <mat-icon fontSet="material-icons-round" class="drag-drop-icon">cloud_upload</mat-icon>
+          <mat-icon fontSet="material-icons-round" class="drag-drop-icon"
+            >cloud_upload</mat-icon
+          >
         </div>
         <span class="mat-body-1">عکس موردنظر را به اینجا بکشید.</span>
       </div>
-      <div *ngIf="files.length !== 0" class="w-100">
-        <img [src]="preview" alt="" height="300px" width="300px">
+      <div *ngIf="files.length !== 0 || this.preview" class="w-100">
+        <img [src]="preview" alt="" height="300px" width="300px" />
       </div>
 
-      <input hidden type="file" accept="image/png, image/jpeg" #fileInput (change)="fileDropped($event.target.files)" />
+      <input
+        hidden
+        type="file"
+        accept="image/png, image/jpeg"
+        #fileInput
+        (change)="fileDropped($event.target.files)"
+      />
     </div>
-    <button *ngIf="files.length !== 0" mat-icon-button (click)="removeFile(0, $event)" color="warn" class="remove-btn">
+    <button
+      *ngIf="files.length !== 0 || this.preview"
+      mat-icon-button
+      (click)="removeFile(0, $event)"
+      color="warn"
+      class="remove-btn"
+    >
       <mat-icon>clear</mat-icon>
     </button>
   </div>
@@ -31,8 +59,25 @@
     <div class="spinner-container" *ngIf="form.disabled">
       <mat-spinner diameter="24"></mat-spinner>
     </div>
-    <button mat-flat-button color="primary" [disabled]="form.disabled" (click)="upload()">اضافه کردن</button>
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="form.disabled"
+      (click)="upload()"
+      *ngIf="!this.patch"
+    >
+      اضافه کردن
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="form.disabled"
+      (click)="patchCategory()"
+      *ngIf="this.patch"
+    >
+      ویرایش
+    </button>
   </div>
 
-  <button mat-flat-button class="mbd-button">لغو</button>
+  <button mat-flat-button class="mbd-button" mat-dialog-close>لغو</button>
 </div>

@@ -77,11 +77,6 @@ $primary: var(--mbd-primary);
   top: 0;
   left: 0;
 }
-::ng-deep .mat-form-field-wrapper {
-  margin: 0 !important;
-  padding: 0;
-  margin-bottom: 12px !important;
-}
 
 .map-container {
   width: 100%;

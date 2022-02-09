@@ -10,7 +10,7 @@
     <input matInput formControlName="name" />
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>قیمت</mat-label>
+    <mat-label>قیمت (تومان)</mat-label>
     <input matInput formControlName="price" />
   </mat-form-field>
 </form>
@@ -40,5 +40,7 @@
     </button>
   </div>
 
-  <button mat-flat-button class="mbd-button">لغو</button>
+  <button mat-flat-button class="mbd-button" type="button" mat-dialog-close>
+    لغو
+  </button>
 </div>

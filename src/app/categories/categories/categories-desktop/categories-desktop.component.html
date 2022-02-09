@@ -36,7 +36,9 @@
         <p class="mr-3">{{ cat.name }}</p>
       </div>
       <div>
-        <button mat-flat-button class="ml-2 edit">ویرایش</button>
+        <button mat-flat-button class="ml-2 edit" (click)="editCategory(cat)">
+          ویرایش
+        </button>
         <button mat-flat-button color="warn" (click)="delete(cat._id)">
           حذف
         </button>
