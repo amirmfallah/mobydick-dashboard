@@ -7,6 +7,7 @@ export interface searchResponse<type> {
 }
 
 export interface CreateIngredient {
-  name: string;
-  price: number;
+  _id?: string;
+  name?: string;
+  price?: number;
 }

@@ -35,4 +35,11 @@ export class IngredientsService {
       ingredients
     );
   }
+
+  patchIngredients(id: string, ingredients: CreateIngredient) {
+    return this.http.patch(
+      `${Configuration.ApiUrl}/api/v1/ingredients/${id}`,
+      ingredients
+    );
+  }
 }

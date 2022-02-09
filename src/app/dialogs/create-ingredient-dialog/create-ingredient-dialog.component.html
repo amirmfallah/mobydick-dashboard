@@ -21,12 +21,22 @@
       <mat-spinner diameter="24"></mat-spinner>
     </div>
     <button
+      *ngIf="!this.patch"
       mat-flat-button
       color="primary"
       [disabled]="form.disabled"
       (click)="create()"
     >
       اضافه کردن
+    </button>
+    <button
+      *ngIf="this.patch"
+      mat-flat-button
+      color="primary"
+      [disabled]="form.disabled"
+      (click)="create()"
+    >
+      ویرایش
     </button>
   </div>
 

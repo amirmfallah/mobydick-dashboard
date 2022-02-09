@@ -36,7 +36,9 @@
         <p class="mr-3">{{ ing.name }}</p>
       </div>
       <div>
-        <button mat-flat-button class="ml-2 edit">ویرایش</button>
+        <button mat-flat-button class="ml-2 edit" (click)="editIngredient(ing)">
+          ویرایش
+        </button>
         <button mat-flat-button color="warn" (click)="delete(ing._id)">
           حذف
         </button>

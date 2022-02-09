@@ -1,3 +1,4 @@
+import { CreateIngredient } from './../../../../core/interfaces/shared.interfaces';
 import { CreateIngredientDialogComponent } from './../../../dialogs/create-ingredient-dialog/create-ingredient-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { debounce, map, switchMap } from 'rxjs/operators';
@@ -93,7 +94,25 @@ export class AllIngredientsDesktopComponent implements OnInit {
 
   createIngredient() {
     this.dialog
-      .open(CreateIngredientDialogComponent)
+      .open(CreateIngredientDialogComponent, { data: undefined })
+      .afterClosed()
+      .subscribe(() => {
+        this.ingredientsService
+          .getAllIngredients(0)
+          .subscribe((res: searchResponse<Ingredients>) => {
+            console.log(res);
+            this.ingredients.next(res.items);
+            this.pages.next(res.pages);
+            this.limit.next(res.limit);
+            this.count.next(res.count);
+            this.currentPage.next(res.currentPage);
+          });
+      });
+  }
+
+  editIngredient(ing: CreateIngredient) {
+    this.dialog
+      .open(CreateIngredientDialogComponent, { data: ing })
       .afterClosed()
       .subscribe(() => {
         this.ingredientsService
