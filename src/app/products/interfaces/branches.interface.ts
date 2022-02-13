@@ -12,8 +12,11 @@ export interface branch {
 }
 
 export interface User {
-  name: string;
-  phone: string;
+  firstname?: string;
+  phone?: string;
+  email?: string;
+  password?: string;
+  lastPassword?: string;
 }
 export interface Address {
   address: string;

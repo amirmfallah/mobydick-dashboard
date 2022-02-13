@@ -1,29 +1,61 @@
 <div class="d-flex justify-content-center align-items-center main-container">
-  <form class="d-flex flex-column main-box" [formGroup]="form" (ngSubmit)="formSubmit.next()">
+  <form
+    class="d-flex flex-column main-box align-items-center"
+    [formGroup]="form"
+    (ngSubmit)="formSubmit.next()"
+  >
     <div class="d-flex flex-column box-description">
       <h1 class="mbd-header">به موبی‌دیک خوش آمدید!</h1>
-      <p class="mbd-text">برای ورود، اطلاعات کاربری خود را وارد کنید.</p>
+      <p class="mbd-text mt-1">برای ورود، اطلاعات کاربری خود را وارد کنید.</p>
     </div>
     <mat-form-field class="email-input" appearance="outline">
       <mat-label class="email-label"> نام‌کاربری </mat-label>
-      <input type="text" matInput formControlName="username" name="username" [disabled]="form.disabled" />
+      <input
+        type="text"
+        matInput
+        formControlName="username"
+        name="username"
+        [disabled]="form.disabled"
+      />
     </mat-form-field>
 
     <mat-form-field class="password-input" appearance="outline">
       <mat-label class="email-label"> رمز عبور </mat-label>
-      <input type="password" minlength="8" matInput formControlName="password" name="password"
-        [disabled]="form.disabled" />
+      <input
+        type="password"
+        minlength="8"
+        matInput
+        formControlName="password"
+        name="password"
+        [disabled]="form.disabled"
+      />
     </mat-form-field>
 
-    <button type="submit" mat-raised-button color="primary" class="mbd-button w-100" [class.btn_loading]="form.disabled"
-      [disabled]="form.disabled">
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      class="mbd-button w-100"
+      [class.btn_loading]="form.disabled"
+      [disabled]="form.disabled"
+    >
       ورود
     </button>
-    <mat-progress-bar [class.invisible]="!form.disabled" [class.visible]="form.disabled" mode="query">
+    <mat-progress-bar
+      [class.invisible]="!form.disabled"
+      [class.visible]="form.disabled"
+      mode="query"
+    >
     </mat-progress-bar>
 
     <mat-error *ngIf="error" class="mat-caption" class="text-center mt-3">
       {{ error }}
     </mat-error>
+    <p style="max-width: 70%" class="text-center mt-3">
+      آیا می‌خواهید شعبه‌ی جدید ثبت کنید؟
+      <span class="color-primary" [routerLink]="['/', 'sign-up']"
+        >راه‌اندازی شعبه جدید.</span
+      >
+    </p>
   </form>
 </div>

@@ -1,8 +1,11 @@
 @import "../ui-kit/styles/themes/variables.scss";
+.main-container {
+  padding: 0 48px 24px 48px;
+}
 .box {
-  background-color: var(--mbd-box);
-  color: var(--mbd-text);
-  height: 50px;
-  width: 50px;
-  margin: 20px;
+  padding: 16px !important;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+  min-height: 140px;
 }

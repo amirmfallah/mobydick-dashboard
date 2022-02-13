@@ -74,6 +74,9 @@ export class LoginComponent
           case 403:
             this.error = 'نام کاربری یا رمز عبور معتبر نمی‌باشد.';
             break;
+          case 404:
+            this.error = 'کاربری با این اطلاعات یافت نشد.';
+            break;
           default:
             this.error = 'مشکلی نامشخص پیش آمده است.';
         }

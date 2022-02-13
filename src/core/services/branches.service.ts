@@ -33,6 +33,12 @@ export class BranchesService {
     return this.http.get(`${Configuration.ApiUrl}/api/v1/branches/owner`);
   }
 
+  getMybranchReport(id: string) {
+    return this.http.get(
+      `${Configuration.ApiUrl}/api/v1/orders/branch/${id}/report`
+    );
+  }
+
   getBranch() {
     return this.branch;
   }

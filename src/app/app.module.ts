@@ -1,3 +1,4 @@
+import { SettingsModule } from './settings/settings.module';
 import { OrdersModule } from './orders/orders.module';
 import { BranchesModule } from './branches/branches.module';
 import { IngredientsModule } from './ingredients/ingredients.module';
@@ -40,6 +41,7 @@ import { CustomPaginator } from 'src/core/CustomPaginatorConfiguration';
     IngredientsModule,
     BranchesModule,
     OrdersModule,
+    SettingsModule,
   ],
   providers: [
     IngredientsService,

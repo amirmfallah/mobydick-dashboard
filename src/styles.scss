@@ -84,3 +84,14 @@ p {
   width: 0px;
   background: transparent; /* make scrollbar transparent */
 }
+
+.header {
+  margin-bottom: 24px;
+  h2 {
+    font-size: 20px;
+  }
+
+  .last-path {
+    opacity: 0.64;
+  }
+}

@@ -1,31 +1,66 @@
 <div class="d-flex justify-content-center align-items-center main-container">
-  <form class="d-flex flex-column main-box" [formGroup]="form" (ngSubmit)="formSubmit.next()">
+  <form
+    class="d-flex flex-column main-box"
+    [formGroup]="form"
+    (ngSubmit)="formSubmit.next()"
+  >
     <div class="d-flex flex-column box-description">
       <h1 class="mbd-header">ثبت نام</h1>
-      <p class="mbd-text">برای ادامه حساب کاربری اطلاعات خود را وارد کنید.</p>
+      <p class="mbd-text mt-1">
+        جهت ثبت شعبه جدید باید ابتدا ثبت‌نام کنید. <br />دقت داشته باشید
+        نام‌کاربری و شماره تلفن پس از ثبت نام قابل تغییر نمی‌باشد.
+      </p>
     </div>
 
-    <mat-form-field class="inputs" appearance="outline">
+    <mat-form-field appearance="outline">
       <mat-label class="email-label"> شماره موبایل </mat-label>
-      <input type="text" matInput formControlName="phone" name="phone" [disabled]="form.disabled" />
+      <input
+        type="text"
+        matInput
+        formControlName="phone"
+        name="phone"
+        [disabled]="form.disabled"
+      />
     </mat-form-field>
 
-    <mat-form-field class="inputs" appearance="outline">
+    <mat-form-field appearance="outline">
       <mat-label>نام‌کاربری</mat-label>
-      <input type="text" matInput formControlName="username" [disabled]="form.disabled" name="username" />
+      <input
+        type="text"
+        matInput
+        formControlName="username"
+        [disabled]="form.disabled"
+        name="username"
+      />
     </mat-form-field>
 
-    <mat-form-field class="inputs" appearance="outline">
+    <mat-form-field appearance="outline">
       <mat-label>رمز عبور</mat-label>
-      <input type="password" minlength="8" matInput formControlName="password" [disabled]="form.disabled"
-        name="password" />
+      <input
+        type="password"
+        minlength="8"
+        matInput
+        formControlName="password"
+        [disabled]="form.disabled"
+        name="password"
+      />
     </mat-form-field>
 
-    <button type="submit" mat-raised-button color="primary" class="mbd-button w-100" [disabled]="form.disabled"
-      [class.btn_loading]="form.disabled">
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      class="mbd-button w-100"
+      [disabled]="form.disabled"
+      [class.btn_loading]="form.disabled"
+    >
       ثبت
     </button>
-    <mat-progress-bar [class.invisible]="!form.disabled" [class.visible]="form.disabled" mode="query">
+    <mat-progress-bar
+      [class.invisible]="!form.disabled"
+      [class.visible]="form.disabled"
+      mode="query"
+    >
     </mat-progress-bar>
 
     <mat-error *ngIf="error" class="mat-caption" class="text-center mt-3">

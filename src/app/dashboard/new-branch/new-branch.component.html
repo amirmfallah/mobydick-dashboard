@@ -3,10 +3,7 @@
   [formGroup]="form"
   (ngSubmit)="submit()"
 >
-  <div class="header">
-    <h2><span class="last-path">خانه / </span>شعبه</h2>
-  </div>
-  <div class="box mb-3 d-flex flex-row">
+  <div class="box mb-3 d-flex flex-row" *ngIf="!hasBranch">
     <mat-icon class="ml-2">info</mat-icon>
     <p>
       شما در حال حاضر شعبه‌ای ثبت نکرده‌اید. اگر تمایل به راه‌اندازی شعبه جدید

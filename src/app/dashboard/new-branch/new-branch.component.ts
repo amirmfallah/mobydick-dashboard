@@ -48,15 +48,20 @@ export class NewBranchComponent implements OnInit {
     private notificationService: NotificationService
   ) {}
   ngOnInit(): void {
-    var newMap = new L.Map('newMap', {
-      key: Configuration.NeshanWebMapApiToken,
-      maptype: 'neshan',
-      poi: true,
-      traffic: false,
-      center: [35.699739, 51.338097],
-      zoom: 14,
-      zoomControl: false,
-    });
+    var newMap = L.DomUtil.get('newMap');
+    if (newMap != null) {
+      newMap._leaflet_id = null;
+    }
+    var newMap =
+      new L.Map('newMap', {
+        key: Configuration.NeshanWebMapApiToken,
+        maptype: 'neshan',
+        poi: true,
+        traffic: false,
+        center: [35.699739, 51.338097],
+        zoom: 14,
+        zoomControl: false,
+      }) || L;
     var marker = L.marker([35.699739, 51.338097]).addTo(newMap);
     const updatePoint = (point) => {
       this.form.get('lng').setValue(point.lng);

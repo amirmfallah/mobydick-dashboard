@@ -7,5 +7,6 @@ import { NewBranchComponent } from './new-branch/new-branch.component';
 @NgModule({
   declarations: [DashboardComponent, NewBranchComponent],
   imports: [CommonModule, UiKitModule],
+  exports: [NewBranchComponent],
 })
 export class DashboardModule {}

@@ -1,3 +1,4 @@
+import { User } from 'src/app/products/interfaces/branches.interface';
 import { BranchesService } from 'src/core/services/branches.service';
 import { SignUp } from './../../app/auth/shared/authentication.interface';
 import { Configuration } from '../configuration';
@@ -102,5 +103,13 @@ export class AuthService {
   hasAccess(role: Role) {
     const roles = <Array<Role>>JSON.parse(localStorage.getItem(this.ROLES));
     return roles.includes(role);
+  }
+
+  getUserInfo() {
+    return this.http.get(`${Configuration.ApiUrl}/api/v1/users/info`);
+  }
+
+  updateUserInfo(user: User) {
+    return this.http.patch(`${Configuration.ApiUrl}/api/v1/users/info`, user);
   }
 }

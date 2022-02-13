@@ -1,3 +1,54 @@
+<div class="header" style="padding-right: 48px">
+  <h2><span class="last-path">خانه / </span>شعبه</h2>
+</div>
 <mbd-new-branch
   *ngIf="!(hasBranch() | async) || !(hasBranch() | async).verified"
 ></mbd-new-branch>
+<div class="main-container">
+  <div class="row">
+    <div class="col-4 widget">
+      <div
+        class="box d-flex flex-column justify-content-between align-items-center"
+      >
+        <div
+          class="d-flex flex-row justify-content-between align-items-center w-100"
+        >
+          <h2>تعداد کل سفارشات</h2>
+          <mat-icon>insights</mat-icon>
+        </div>
+        <h1>{{ ($branchDetail | async).totalCount }}</h1>
+      </div>
+    </div>
+    <div class="col-4 widget">
+      <div
+        class="box d-flex flex-column justify-content-between align-items-center"
+      >
+        <div
+          class="d-flex flex-row justify-content-between align-items-center w-100"
+        >
+          <h2>تعداد سفارشات باز</h2>
+          <mat-icon>local_mall</mat-icon>
+        </div>
+        <h1>{{ ($branchDetail | async).totalOpen }}</h1>
+      </div>
+    </div>
+    <div class="col-4 widget">
+      <div
+        class="box d-flex flex-column justify-content-between align-items-center"
+      >
+        <div
+          class="d-flex flex-row justify-content-between align-items-center w-100"
+        >
+          <h2>فروش این ماه</h2>
+          <mat-icon>paid</mat-icon>
+        </div>
+        <p>
+          <span class="mat-h1">{{
+            ($branchDetail | async).totalSold.toLocaleString()
+          }}</span>
+          تومان
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
